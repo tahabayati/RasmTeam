@@ -1,0 +1,55 @@
+:root {
+  --indigo-400: #8E92FD; /* primary accent */
+  --ink-950: #000505;    /* background */
+  --paper: #FDFFFC;      /* foreground text */
+  --indigo-500: #797DFC; /* secondary accent */
+}
+
+.container {
+  min-height: 100dvh;
+  display: grid;
+  place-items: center;
+  background: radial-gradient(80rem 80rem at 20% -10%, rgba(142, 146, 253, 0.15), transparent 60%),
+              radial-gradient(70rem 70rem at 120% 10%, rgba(121, 125, 252, 0.12), transparent 60%),
+              var(--ink-950);
+  padding: 2rem;
+}
+
+.card {
+  width: min(720px, 100%);
+  background: rgba(253, 255, 252, 0.04);
+  border: 1px solid rgba(142, 146, 253, 0.25);
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 5, 5, 0.4), inset 0 1px 0 rgba(253, 255, 252, 0.06);
+  padding: 2rem; 
+  text-align: center;
+  backdrop-filter: blur(8px);
+}
+
+.badge {
+  display: inline-block;
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+  color: var(--paper);
+  background: linear-gradient(90deg, var(--indigo-400), var(--indigo-500));
+  padding: 0.35rem 0.6rem;
+  border-radius: 999px;
+  border: 1px solid rgba(253, 255, 252, 0.2);
+}
+
+.title {
+  margin: 1rem 0 0.5rem 0;
+  font-size: clamp(2rem, 3.5vw, 3rem);
+  line-height: 1.1;
+  color: var(--paper);
+}
+
+.subtitle {
+  margin: 0 auto;
+  max-width: 50ch;
+  color: rgba(253, 255, 252, 0.8);
+}
+
+/* Simplified: removed actions/link styles for a cleaner standard look */
+
+

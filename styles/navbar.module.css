@@ -1,0 +1,95 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap');
+
+.nav {
+  position: sticky;
+  top: 12px;
+  z-index: 50;
+  width: clamp(300px, 42vw, 380px);
+  margin: 0 auto;
+  padding: 10px 12px;
+  border-radius: 9999px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.38), rgba(255, 255, 255, 0.26));
+  backdrop-filter: blur(12px) saturate(160%);
+  -webkit-backdrop-filter: blur(12px) saturate(160%);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  isolation: isolate;
+  font-family: 'Roboto', sans-serif;
+}
+
+/* subtle grain */
+.nav::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160' viewBox='0 0 160 160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 160px 160px;
+  opacity: 0.06;
+  pointer-events: none;
+}
+.list {
+  list-style: none;
+  display: flex;
+  flex-wrap: nowrap; /* never wrap to second line */
+  align-items: center;
+  justify-content: space-between;
+  gap: clamp(4px, 2vw, 8px); /* shrink gap on smaller screens */
+  margin: 0;
+  padding: 0;
+  font-size: clamp(10px, 2vw, 12px); /* shrink font on smaller screens */
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.list a {
+  position: relative;
+  display: block;
+  white-space: nowrap; /* keep each label on one line */
+  padding: 6px clamp(6px, 2vw, 10px); /* shrink padding on smaller screens */
+  color: #0f0f0f;
+  text-decoration: none;
+  opacity: 0.90;
+  transition: opacity 0.18s ease;
+}
+
+/* deformed noisy hover blob */
+.list a::before {
+  content: "";
+  position: absolute;
+  inset: -6px -10px;
+  border-radius: 9999px;
+  background: radial-gradient(
+    90% 100% at var(--hx,50%) var(--hy,50%),
+    rgba(67, 74, 155, 0.32), /* your color with transparency */
+    rgba(67, 74, 155, 0) 60%
+  );
+  opacity: 0;
+  transform: scale(0.9) rotate(var(--twist, 0deg));
+  transition: opacity 0.35s ease, transform 0.35s ease;
+  z-index: -1;
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='f'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23f)'/%3E%3C/svg%3E");
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='f'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23f)'/%3E%3C/svg%3E");
+  mask-size: 180px 180px;
+  mask-repeat: repeat;
+  mask-position: var(--noiseX, 0) var(--noiseY, 0);
+}
+
+
+.list a:hover {
+  opacity: 1;
+}
+
+.list a:hover::before {
+  opacity: 1;
+  transform: scale(1) rotate(var(--twist, 0deg));
+}
+
+@media (max-width: 500px) {
+  .nav {
+    position: fixed;
+    top: auto;
+    bottom: 12px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}

@@ -2,10 +2,26 @@ import VideoHero from "../components/VideoHero";
 import styles from "../../styles/home.module.css";
 import Link from "next/link";
 import TeamCarousel from "../components/TeamCarousel";
+import WorkCard from "../components/WorkCard";
 
 export const dynamic = "force-dynamic";
 
 export default function Home() {
+  const worksData = [
+    { tags: ["Kia Global", "Brand"], description: "Bold brand identity system executed across digital and print touchpoints.", img: "/selectedworks/harandian.jpg" },
+    { tags: ["Skincare", "CGI"], description: "Amber: product CGI with realistic lighting and nuanced materials.", img: "/selectedworks/mok.jpg" },
+
+    { tags: ["Aston Martin", "Campaign"], description: "Valour visual campaign: heritage meets modern performance.", img: "/selectedworks/besty.jpg" },
+    { tags: ["Architecture", "Case Study"], description: "Copper Stair: a spatial narrative in form and function.", img: "/selectedworks/Storefront.jpg" },
+
+    { tags: ["Rimowa", "Product"], description: "Product imagery highlighting engineering precision and craft.", img: "/selectedworks/marfaaa.jpg" },
+    { tags: ["Research", "Material"], description: "Aggregate: a study in texture, weight, and structure.", img: "/selectedworks/oko.jpg" },
+    { tags: ["Studio", "Portraits"], description: "Who We Are: portraits capturing the spirit of the team.", img: "/selectedworks/buytronics.jpg" },
+    { tags: ["Editorial", "Book"], description: "Timeless / Pleasure: editorial design with a focus on rhythm and pacing.", img: "/selectedworks/renzo.jpg" },
+    { tags: ["Industrial", "Photography"], description: "Raw Plate: industrial photography celebrating process.", img: "/selectedworks/BlueDot.jpg" },
+   
+  ];
+
   return (
     <section className={styles.wrap}>
       <VideoHero />
@@ -99,7 +115,7 @@ export default function Home() {
         <hr className={styles.rule} />
       </section>
 
-      <hr className={styles.rule} />
+  
       <section className={styles.services}>
         <div className={styles.servicesGrid}>
           <article className={styles.svcCard}>
@@ -108,7 +124,7 @@ export default function Home() {
               <div className={styles.chip}>Branding</div>
               <div className={styles.svcFill}>
                 <p>
-                  <strong>Branding Services</strong><br />
+                  <span className={styles.captionTitle}><strong>Branding Services</strong><br /></span>
                   Visual Identity Design: Brand strategy, logo design, and corporate identity.
                   Graphic Design: Print materials, packaging design, and promotional graphics.
                 </p>
@@ -129,7 +145,7 @@ export default function Home() {
               <div className={styles.chip}>Software Dev & IT</div>
               <div className={styles.svcFill}>
                 <p>
-                  <strong>Software Development & IT Solutions</strong><br />
+                  <span className={styles.captionTitle}><strong>Software Development & IT Solutions</strong><br /></span>
                   From developing your needed apps to designing exclusive IT solutions for your corporate workflows.
                 </p>
               </div>
@@ -148,7 +164,7 @@ export default function Home() {
               <div className={styles.chip}>Digital</div>
               <div className={styles.svcFill}>
                 <p>
-                  <strong>Digital Services</strong><br />
+                  <span className={styles.captionTitle}><strong>Digital Services</strong><br /></span>
                   Website Design: UI/UX, development, maintenance. 2D/3D Animations: motion graphics, explainers, ads.
                 </p>
               </div>
@@ -168,7 +184,7 @@ export default function Home() {
               <div className={styles.chip}>Media</div>
               <div className={styles.svcFill}>
                 <p>
-                  <strong>Media Production</strong><br />
+                  <span className={styles.captionTitle}><strong>Media Production</strong><br /></span>
                   Industrial Photography: product, corporate, and event. Videography: corporate, promotional, and events.
                 </p>
               </div>
@@ -189,71 +205,9 @@ export default function Home() {
   <h2 className={styles.selTitle}>Selected Works</h2>
 
   <div className={styles.masonry}>
-    <article className={styles.work}>
-      <div className={styles.imgWrap}>
-        <div className={styles.phA} />
-        <div className={styles.chip}>Kia Global</div>
-      </div>
-      <div className={styles.wmeta}>
-        <h3 className={styles.wtitle}>Kia Global</h3>
-        <p className={styles.wsub}>Brand Identity</p>
-      </div>
-    </article>
-
-    <article className={styles.work}>
-      <div className={styles.imgWrap}>
-        <div className={styles.phB} />
-        <div className={styles.chip}>Aston Martin</div>
-      </div>
-      <div className={styles.wmeta}>
-        <h3 className={styles.wtitle}>Valour</h3>
-        <p className={styles.wsub}>Campaign Visuals</p>
-      </div>
-    </article>
-
-    <article className={styles.work}>
-      <div className={styles.imgWrap}>
-        <div className={styles.phC} />
-        <div className={styles.chip}>Rimowa</div>
-      </div>
-      <div className={styles.wmeta}>
-        <h3 className={styles.wtitle}>Ingenieurskunst</h3>
-        <p className={styles.wsub}>Product Imagery</p>
-      </div>
-    </article>
-
-    <article className={styles.work}>
-      <div className={styles.imgWrap}>
-        <div className={styles.phD} />
-        <div className={styles.chip}>Material Study</div>
-      </div>
-      <div className={styles.wmeta}>
-        <h3 className={styles.wtitle}>Aggregate</h3>
-        <p className={styles.wsub}>Research</p>
-      </div>
-    </article>
-
-    <article className={styles.work}>
-      <div className={styles.imgWrap}>
-        <div className={styles.phB} />
-        <div className={styles.chip}>Editorial</div>
-      </div>
-      <div className={styles.wmeta}>
-        <h3 className={styles.wtitle}>Timeless / Pleasure</h3>
-        <p className={styles.wsub}>Book Design</p>
-      </div>
-    </article>
-
-    <article className={styles.work}>
-      <div className={styles.imgWrap}>
-        <div className={styles.phC} />
-        <div className={styles.chip}>Skincare</div>
-      </div>
-      <div className={styles.wmeta}>
-        <h3 className={styles.wtitle}>Amber</h3>
-        <p className={styles.wsub}>Product CGI</p>
-      </div>
-    </article>
+    {worksData.map((w, idx) => (
+      <WorkCard key={idx} img={w.img} tags={w.tags} description={w.description} />
+    ))}
   </div>
 
   <div className={styles.moreWrap}>

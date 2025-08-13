@@ -50,7 +50,7 @@ export default function VideoHero() {
           <video
             ref={vidRef}
             className={styles.video}
-            src="/hero.mp4"
+            src="/HeroVideo.webm"
             autoPlay
             playsInline
             muted
@@ -61,7 +61,12 @@ export default function VideoHero() {
         ) : (
           <div className={styles.wire} aria-hidden="true" />
         )}
-        <div className={styles.slogan}>Telling Stories, Designing Success</div>
+        <div className={styles.slogan}>
+          <div>TELLING</div>
+          <div>STORIES</div>
+          <div>DESIGNING</div>
+          <div>SUCCESS</div>
+        </div>
       </div>
     </section>
   );

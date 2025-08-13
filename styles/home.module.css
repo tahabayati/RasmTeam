@@ -1,7 +1,7 @@
 .wrap {
   display: grid;
   gap: 40px;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Jakarta', sans-serif;
 }
 
 .hero {
@@ -194,8 +194,8 @@
   right: 0;
   bottom: 0;
   height: 0;
-  background: #434a9b;
-  color: #fff;
+  background: #D9D2FE;
+  color: #000000;
   display: grid;
   place-items: center;
   padding: clamp(14px, 3vw, 28px);
@@ -204,7 +204,7 @@
 }
 
 .duo .hover p {
-  font-size: clamp(16px, 2.2vw, 26px);
+  font-size: clamp(14px, 2.2vw, 18px);
   line-height: 1.45;
     text-align: justify;
 }
@@ -220,6 +220,7 @@
   color: #fff;
   padding: 12px 14px;
   border-radius: 0 0 12px 12px;
+
 }
 
 .duo .mobileCaption p {
@@ -235,20 +236,42 @@
     display: block;
   }
 }
+.captionTitle{
+
+  font-size: 32px;
+    display: block;
+  margin-bottom: 24px;
+}
+/* image swap for Who We Are */
+.imgBox{
+  position: relative;
+  width: 100%;
+  aspect-ratio: 21 / 12; /* matches your slimmer card look */
+}
+
+.duoImg{
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  border-radius: 12px; /* follows your .item radius */
+}
 
 .rule {
-  margin: 28px clamp(16px, 4vw, 48px) 0;
+  margin: 28px clamp(36px, 4vw, 78px) 0;
   border: 0;
   border-bottom: 1px solid rgba(0, 0, 0, 0.08);
 }
 
 .boutique {
-  padding: 48px clamp(16px, 4vw, 48px) 0;
+  padding: 8px clamp(16px, 7vw, 200px) 0;
 }
 
 .boutiqueGrid {
   display: grid;
-  grid-template-columns: 1.1fr 1fr;
+  grid-template-columns: 0.5fr 1fr;
   gap: clamp(16px, 4vw, 48px);
   align-items: end;
 }
@@ -262,6 +285,8 @@
 
 .boutiqueHead {
   display: grid;
+  justify-content: center;
+  align-items: center;
   gap: 8px;
 }
 
@@ -307,10 +332,15 @@
 }
 
 .boutiqueCopy {
+  transform: translateY(-70px);
   font-size: clamp(16px, 2.1vw, 18px);
   line-height: 1.7;
+  margin: 0;
   color: #2a2a2a;
   max-width: 62ch;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .services {
   padding: 24px clamp(16px, 3vw, 36px) 0;
@@ -507,4 +537,63 @@
   margin: 28px 0 0;
   border: 0;
   border-bottom: 1px solid rgba(0,0,0,.08);
+}
+.postHero{
+  padding: 0 clamp(16px,4vw,48px);
+  max-width:48ch;
+  color: #2a2a2a;
+  font-size: clamp(22px,2.2vw,38px);
+  line-height: 1.2;
+  letter-spacing: .01em;
+  margin-left: 80px;
+  margin-top: 0;
+  margin-bottom: 0;
+  /* text-align: justify; */
+  font-weight: 700;
+}
+.tagsRow{
+  margin-top: clamp(10px, 2vw, 18px);
+  display: flex;
+  flex-wrap: wrap;
+  gap: clamp(6px, 1vw, 12px);
+  align-items: center;
+  margin-left: 150px;
+}
+
+.tag{
+  appearance: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 28px;                 
+  padding: 0 12px;            
+  border-radius: 999px;        
+  border: 1px solid rgba(0,0,0,.14);
+  background: rgba(255,255,255,.7);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+  font-size: 12px;
+  font-weight: 400;            
+  letter-spacing: .02em;
+  line-height: 1;
+  cursor: pointer;
+  transition: transform .15s ease, background-color .15s ease,
+              border-color .15s ease, box-shadow .15s ease;
+}
+
+.tag:hover{
+  transform: translateY(-1px);
+  background: #fff;
+  border-color: rgba(0,0,0,.22);
+  box-shadow: 0 8px 18px rgba(0,0,0,.06);
+}
+
+.tag:active{
+  transform: translateY(0);
+  box-shadow: 0 2px 6px rgba(0,0,0,.08);
+}
+
+.tag:focus-visible{
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
 }

@@ -19,7 +19,39 @@
    height:auto;
    border-radius:22px;
    background:#e9e9e7;
+   filter: grayscale(1) contrast(1.2) opacity(0.9) ;
  }
+ .video-wrap{
+  position: relative;
+  border-radius: 22px;
+  overflow: hidden;            /* clips the overlay to rounded corners */
+  background:#e9e9e7;
+}
+
+.video{
+  display:block;
+  width:100%;
+  height:auto;
+  filter: grayscale(1) contrast(1.2) opacity(.9);
+}
+
+/* Grain overlay */
+.video-wrap::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  border-radius: inherit;
+  background-image: url('/noise.png'); /* use a tiny seamless noise PNG or SVG */
+  background-size: 200px 200px;
+  opacity:.15;
+  mix-blend-mode: overlay;     /* try 'soft-light' if you prefer */
+  animation: grainMove 1.2s steps(4) infinite;
+}
+
+@keyframes grainMove{
+  to { background-position: 200px 200px; }
+}
  .wire {
    width: 100%;
    aspect-ratio: 16/9;
@@ -41,17 +73,35 @@
  /* simple, slow fade; fixed deformed-grain blob behind text */
  .slogan {
    position: absolute;
-   inset: 0;
-   display: grid;
-   place-items: center;
-   text-align: center;
-   padding: 0 24px;
+   top: 50%;
+   transform: translateY(-50%);
+   left: 0;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   gap: clamp(1rem, 3vh, 3rem);
+   padding: 0 5vw;
    font-family: Arial, Helvetica, sans-serif;
-   font-size: clamp(20px, 3.8vw, 44px);
-   font-weight: 500;
-   color: rgba(15, 15, 15, 0.92);
+   font-size: clamp(1.5rem, 6vw, 8rem);
+   font-weight: 900;
+   line-height: 1;
+   color: white;
+   mix-blend-mode: difference;
+   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
    opacity: 0;
+   letter-spacing: -0.02em;
+   text-transform: uppercase;
  }
+
+ .slogan div {
+   transform: translateX(-0.5rem);
+   transition: transform 0.3s ease;
+ }
+
+ .slogan div:hover {
+   transform: translateX(0);
+ }
+ 
  
  .show .slogan {
    animation: fadeInSimple 3s ease forwards 0.35s;

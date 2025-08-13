@@ -1,6 +1,7 @@
 import VideoHero from "../components/VideoHero";
 import styles from "../../styles/home.module.css";
 import Link from "next/link";
+import TeamCarousel from "../components/TeamCarousel";
 
 export const dynamic = "force-dynamic";
 
@@ -8,46 +9,75 @@ export default function Home() {
   return (
     <section className={styles.wrap}>
       <VideoHero />
+      <section className={styles.intro}>
+        <p className={styles.postHero}>
+          We are rasm, dream weavers and brand architects. Our passionate team blends artistic vision
+          with strategic thinking to elevate your brand. Embracing a boutique philosophy, we provide
+          personalized, one-on-one service to turn your ideas into impactful realities.
+        </p>
+        <div className={styles.tagsRow}>
+          <button className={styles.tag}>WEB DESIGN</button>
+          <button className={styles.tag}>UX / UI</button>
+          <button className={styles.tag}>Development</button>
+          <button className={styles.tag}>GRAPHIC DESIGN</button>
+          <button className={styles.tag}>MEDIA PRODUCTION</button>
+        </div>
 
-      <h2 className={styles.duoTitle}>Who We Are</h2>
+
+      </section>
+  
 
       <section className={styles.duo}>
-        <figure className={styles.item}>
-          <div className={styles.ph} />
-          <figcaption className={styles.hover}>
-            <p>
-              <strong>Our Creative Vision</strong>
-              <br />
-              we’re not just creators; we’re dream weavers and brand architects. Our team is passionate about blending artistic vision with strategic thinking to elevate your brand’s presence. Embracing a boutique philosophy, we offer tailored, one-on-one service that transforms ideas into reality.
-            </p>
-          </figcaption>
-          <div className={styles.mobileCaption}>
-            <p>
-              <strong>Our Creative Vision</strong>
-              <br />
-              we’re not just creators; we’re dream weavers and brand architects. Our team is passionate about blending artistic vision with strategic thinking to elevate your brand’s presence. Embracing a boutique philosophy, we offer tailored, one-on-one service that transforms ideas into reality.
-            </p>
-          </div>
-        </figure>
+  <figure className={styles.item}>
+    <div className={styles.imgBox}>
+      <img
+        className={styles.duoImg}
+        src="/whoweare/whoweare1.jpg"
+        alt="Our Creative Vision — RASM"
+      />
+    </div>
+    <figcaption className={styles.hover}>
+      <p>
+       <span className={styles.captionTitle}><strong>Our Creative Vision</strong><br /></span>
+        
+        we’re not just creators; we’re dream weavers and brand architects. Our team is passionate about blending artistic vision with strategic thinking to elevate your brand’s presence. Embracing a boutique philosophy, we offer tailored, one-on-one service that transforms ideas into reality.
+      </p>
+    </figcaption>
+    <div className={styles.mobileCaption}>
+      <p>
+        <span><strong>Our Creative Vision</strong><br /></span>
 
-        <figure className={styles.item}>
-          <div className={styles.ph} />
-          <figcaption className={styles.hover}>
-            <p>
-              <strong>Transforming Ideas into Impact</strong>
-              <br />
-              From immersive business consulting to stunning visual identities, industrial photography, videography, and innovative 2D/3D animations, we craft unique solutions that resonate. Join us on a creative journey where your brand’s story unfolds with authenticity and flair.
-            </p>
-          </figcaption>
-          <div className={styles.mobileCaption}>
-            <p>
-              <strong>Transforming Ideas into Impact</strong>
-              <br />
-              From immersive business consulting to stunning visual identities, industrial photography, videography, and innovative 2D/3D animations, we craft unique solutions that resonate. Join us on a creative journey where your brand’s story unfolds with authenticity and flair.
-            </p>
-          </div>
-        </figure>
-      </section>
+        
+        we’re not just creators; we’re dream weavers and brand architects. Our team is passionate about blending artistic vision with strategic thinking to elevate your brand’s presence. Embracing a boutique philosophy, we offer tailored, one-on-one service that transforms ideas into reality.
+      </p>
+    </div>
+  </figure>
+
+  <figure className={styles.item}>
+    <div className={styles.imgBox}>
+      <img
+        className={styles.duoImg}
+        src="/whoweare/whoweare2.jpg"
+        alt="Transforming Ideas into Impact — RASM"
+      />
+    </div>
+    <figcaption className={styles.hover}>
+      <p>
+        <span className={styles.captionTitle}> <strong>Transforming Ideas into Impact</strong><br /></span>
+
+       
+        From immersive business consulting to stunning visual identities, industrial photography, videography, and innovative 2D/3D animations, we craft unique solutions that resonate. Join us on a creative journey where your brand’s story unfolds with authenticity and flair.
+      </p>
+    </figcaption>
+    <div className={styles.mobileCaption}>
+      <p>
+        <strong>Transforming Ideas into Impact</strong><br />
+        From immersive business consulting to stunning visual identities, industrial photography, videography, and innovative 2D/3D animations, we craft unique solutions that resonate. Join us on a creative journey where your brand’s story unfolds with authenticity and flair.
+      </p>
+    </div>
+  </figure>
+</section>
+
 
       <section className={styles.boutique}>
         <div className={styles.boutiqueGrid}>
@@ -237,6 +267,8 @@ export default function Home() {
 
   <hr className={styles.rule} />
 </section>
+
+<TeamCarousel />
     </section>
   );
 }

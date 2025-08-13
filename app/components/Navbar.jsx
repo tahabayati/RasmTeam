@@ -14,12 +14,24 @@ function randomize(e) {
 export default function Navbar() {
   return (
     <nav className={styles.nav}>
+      <div className={styles.logoWrap}>
+        <Link href="/" className={styles.logoLink} onMouseEnter={randomize}>
+          <img src="/RasmHeaderLogo.webp" alt="RASM logo" className={styles.logoImg} />
+        </Link>
+      </div>
+
       <ul className={styles.list}>
-        <li><Link href="/"        onMouseEnter={randomize}>Home</Link></li>
+        <li><Link href="/" onMouseEnter={randomize}>Home</Link></li>
         <li><Link href="/projects" onMouseEnter={randomize}>Projects</Link></li>
-        <li><Link href="/about"    onMouseEnter={randomize}>About us</Link></li>
-        <li><Link href="/contact"  onMouseEnter={randomize}>Contact us</Link></li>
+        <li><Link href="/about" onMouseEnter={randomize}>About us</Link></li>
+        <li><Link href="/contact" onMouseEnter={randomize}>Contact us</Link></li>
       </ul>
+
+      <div className={styles.logoWrapAfter}>
+        <Link href="/" className={styles.logoLink} onMouseEnter={randomize}>
+            WEB DESIGN
+        </Link>
+      </div>
     </nav>
   );
 }

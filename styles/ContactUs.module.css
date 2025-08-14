@@ -1,0 +1,111 @@
+/* Contact Us styles aligned with home/footer patterns */
+.wrap {
+  padding: 24px clamp(16px, 7vw, 180px) 48px;
+  display: grid;
+  gap: 18px;
+}
+
+.header {
+  display: grid;
+  gap: 8px;
+}
+
+.title {
+  display: grid;
+  gap: 2px;
+  font-size: clamp(34px, 6vw, 72px);
+  line-height: 1.02;
+  letter-spacing: 0.005em;
+  color: #0f0f0f;
+  font-family: 'Nohemi';
+}
+
+.title span { display: block; }
+
+.subtitle {
+  font-size: clamp(14px, 2vw, 18px);
+  color: #6b6b6b;
+  max-width: 64ch;
+}
+
+.form {
+  display: grid;
+  gap: 16px;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 16px;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 12px;
+}
+
+.field { grid-column: span 6; display: grid; gap: 6px; }
+
+@media (max-width: 900px) { .field { grid-column: span 12; } }
+
+.label {
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #6b6b6b;
+}
+
+.input,
+.textarea {
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 12px 14px;
+  font-size: 14px;
+  background: #fff;
+  color: #0f0f0f;
+  transition: border-color .15s ease, box-shadow .15s ease, transform .15s ease;
+}
+
+.input:focus,
+.textarea:focus {
+  outline: none;
+  border-color: #cfcfcf;
+  box-shadow: 0 8px 18px rgba(0,0,0,.06);
+}
+
+.textarea { resize: vertical; }
+
+.actions { display: flex; justify-content: flex-end; }
+
+.button {
+  appearance: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  padding: 0 16px;
+  border-radius: 9999px;
+  border: 1px solid #dcdcdc;
+  background: #fff;
+  color: #0f0f0f;
+  cursor: pointer;
+  transition: transform .15s ease, background .2s ease, border-color .2s ease, box-shadow .15s ease;
+  font-weight: 500;
+}
+
+.button:hover { background: #f5f5f5; border-color: #cfcfcf; transform: translateY(-1px); }
+.button:active { transform: translateY(0); box-shadow: 0 2px 6px rgba(0,0,0,.08); }
+.button:disabled { opacity: .6; cursor: not-allowed; transform: none; }
+
+.note {
+  margin-top: 6px;
+  font-size: 13px;
+  color: #2a2a2a;
+}
+
+.noteError {
+  margin-top: 6px;
+  font-size: 13px;
+  color: #b00020;
+}
+

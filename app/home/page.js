@@ -2,7 +2,6 @@ import VideoHero from "../components/VideoHero";
 import styles from "../../styles/home.module.css";
 import Link from "next/link";
 import TeamCarousel from "../components/TeamCarousel";
-import WorkCard from "../components/WorkCard";
 
 export const dynamic = "force-dynamic";
 
@@ -15,10 +14,12 @@ export default function Home() {
     { tags: ["Architecture", "Case Study"], description: "Copper Stair: a spatial narrative in form and function.", img: "/selectedworks/Storefront.jpg" },
 
     { tags: ["Rimowa", "Product"], description: "Product imagery highlighting engineering precision and craft.", img: "/selectedworks/marfaaa.jpg" },
-    { tags: ["Research", "Material"], description: "Aggregate: a study in texture, weight, and structure.", img: "/selectedworks/oko.jpg" },
     { tags: ["Studio", "Portraits"], description: "Who We Are: portraits capturing the spirit of the team.", img: "/selectedworks/buytronics.jpg" },
-    { tags: ["Editorial", "Book"], description: "Timeless / Pleasure: editorial design with a focus on rhythm and pacing.", img: "/selectedworks/renzo.jpg" },
+    { tags: ["Research", "Material"], description: "Aggregate: a study in texture, weight, and structure.", img: "/selectedworks/oko.jpg" },
+
     { tags: ["Industrial", "Photography"], description: "Raw Plate: industrial photography celebrating process.", img: "/selectedworks/BlueDot.jpg" },
+
+    { tags: ["Editorial", "Book"], description: "Timeless / Pleasure: editorial design with a focus on rhythm and pacing.", img: "/selectedworks/renzo.jpg" },
    
   ];
 
@@ -120,8 +121,8 @@ export default function Home() {
         <div className={styles.servicesGrid}>
           <article className={styles.svcCard}>
             <div className={styles.imgWrap}>
-              <div className={styles.ph} />
-              <div className={styles.chip}>Branding</div>
+              <img className={styles.svcImg} src="/OurServices/BrandinServices.jpg" alt="Branding" loading="lazy" />
+              <div className={styles.svcLabel}>Branding</div>
               <div className={styles.svcFill}>
                 <p>
                   <span className={styles.captionTitle}><strong>Branding Services</strong><br /></span>
@@ -141,8 +142,8 @@ export default function Home() {
 
           <article className={styles.svcCard}>
             <div className={styles.imgWrap}>
-              <div className={styles.ph} />
-              <div className={styles.chip}>Software Dev & IT</div>
+              <img className={styles.svcImg} src="/OurServices/SoftwareDevelopment&ITSolutions.jpg" alt="Software Development & IT" loading="lazy" />
+              <div className={styles.svcLabel}>Software Dev & IT</div>
               <div className={styles.svcFill}>
                 <p>
                   <span className={styles.captionTitle}><strong>Software Development & IT Solutions</strong><br /></span>
@@ -160,8 +161,8 @@ export default function Home() {
 
           <article className={styles.svcCard}>
             <div className={styles.imgWrap}>
-              <div className={styles.ph} />
-              <div className={styles.chip}>Digital</div>
+              <img className={styles.svcImg} src="/OurServices/DigitalServices.jpg" alt="Digital Services" loading="lazy" />
+              <div className={styles.svcLabel}>Digital</div>
               <div className={styles.svcFill}>
                 <p>
                   <span className={styles.captionTitle}><strong>Digital Services</strong><br /></span>
@@ -180,8 +181,8 @@ export default function Home() {
 
           <article className={styles.svcCard}>
             <div className={styles.imgWrap}>
-              <div className={styles.ph} />
-              <div className={styles.chip}>Media</div>
+              <img className={styles.svcImg} src="/OurServices/MediaProduction.jpg" alt="Media Production" loading="lazy" />
+              <div className={styles.svcLabel}>Media</div>
               <div className={styles.svcFill}>
                 <p>
                   <span className={styles.captionTitle}><strong>Media Production</strong><br /></span>
@@ -202,17 +203,31 @@ export default function Home() {
         <hr className={styles.rule} />
       </section>
 <section className={styles.works}>
-  <h2 className={styles.selTitle}>Selected Works</h2>
+  <h2 className={styles.selTitle} aria-label="Selected Works" role="heading">SELECTED WORKS</h2>
 
   <div className={styles.masonry}>
     {worksData.map((w, idx) => (
-      <WorkCard key={idx} img={w.img} tags={w.tags} description={w.description} />
+      <article className={styles.work} key={idx}>
+        <div className={styles.imgWrap}>
+          <img className={styles.workImg} src={w.img} alt={w.description} loading="lazy" />
+          <div className={styles.overlayMeta}>
+            <span className={styles.workDesc}>{w.description}</span>
+            {w.tags && w.tags.length > 0 && (
+              <div className={styles.workTags}>
+                {w.tags.map((t, i) => (
+                  <span key={i} className={styles.workTag}>{t}</span>
+                ))}
+              </div>
+            )}
+          </div>
+        </div>
+      </article>
     ))}
   </div>
 
   <div className={styles.moreWrap}>
     <Link href="/projects" className={styles.moreBtn}>
-      More
+      View All Projects
       <svg className={styles.arrow} width="16" height="16" viewBox="0 0 24 24" aria-hidden="true">
         <path d="M5 12h14M13 5l7 7-7 7" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
       </svg>
@@ -222,7 +237,7 @@ export default function Home() {
   <hr className={styles.rule} />
 </section>
 
-<TeamCarousel />
+  <TeamCarousel />
     </section>
   );
 }

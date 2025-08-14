@@ -1,11 +1,11 @@
-:root {
+/* Scope CSS variables to this page's container to satisfy CSS Modules purity */
+
+
+.container {
   --indigo-400: #8E92FD; /* primary accent */
   --ink-950: #000505;    /* background */
   --paper: #FDFFFC;      /* foreground text */
   --indigo-500: #797DFC; /* secondary accent */
-}
-
-.container {
   min-height: 100dvh;
   display: grid;
   place-items: center;

@@ -3,13 +3,21 @@ import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import styles from "../../styles/team.module.css";
 
 const samplePeople = [
-  { name: "Sara K.", role: "Art Director", img: "/team/sara.jpg" },
-  { name: "Reza A.", role: "Brand Designer", img: "/team/reza.jpg" },
-  { name: "Mina H.", role: "Frontend Dev", img: "/team/mina.jpg" },
-  { name: "Ali R.", role: "Motion Designer", img: "/team/ali.jpg" },
-  { name: "Laleh S.", role: "Photographer", img: "/team/laleh.jpg" },
-  { name: "Kaveh D.", role: "UX Engineer", img: "/team/kaveh.jpg" },
-  { name: "Neda M.", role: "Producer", img: "/team/neda.jpg" }
+  { name: "Faraz Yavari", role: "Co-Founder, Project Manager", img: "/Team/FarazYavari.jpeg" },
+  { name: "Mohsen Parvazi", role: "Co-Founder, Web Designer", img: "/Team/MohasenParvazi.jpeg" },
+  { name: "Pouya Ahmari Poor", role: "Senior Graphic Designer", img: "/Team/PooyaAhmari.jpeg" },
+  { name: "Maryam Eyvazi", role: "Website Designer", img: "/Team/MaryamEyvazi.jpeg" },
+  { name: "Sina Hamedi", role: "Media Producer", img: "/Team/SinaHamedi.jpeg" },
+  { name: "Bita Gordi", role: "Graphic Designer", img: "/Team/BitaGordi.jpeg" },
+  { name: "Saba ShirKhani", role: "Sales Person", img: "/Team/SabaShirkhani.jpeg" },
+  { name: "Taha Bayati", role: "Software Developer", img: "/Team/TahaBayati.JPG" },
+  { name: "Sina Cheshmeh Kaboudi", role: "Game Programer & Designer", img: "/Team/sinaCheshmKabudi.jpeg" },
+  { name: "Rasul Pirhooshiar", role: "Videographer & Product PhotoGrapher", img: "/Team/RasulPirhooshiar.jpg" },
+  { name: "Mohsen Rashidi", role: "Product Videographer", img: "/Team/MohsenRashidi.jpeg" },
+  { name: "Maryam Mehravar", role: "3D Modeler & Designer", img: "/Team/MaryamMehravar.jpeg" },
+  { name: "Saeed Karimi", role: "Sound Engineer & MNusician", img: "/Team/SaeedKarimi.jpeg" },
+  { name: "Ali Naderi", role: "Automation & Backend Developer", img: "/Team/AliNaderi.jpeg" },
+
 ];
 
 export default function TeamCarousel({ people = samplePeople, autoplayMs = 1600 }) {
@@ -100,8 +108,8 @@ export default function TeamCarousel({ people = samplePeople, autoplayMs = 1600 
         <div ref={trackRef} className={styles.track}>
           {triple.map((p, i) => (
             <figure key={`${p.name}-${i}`} className={styles.card}>
-              <div className={styles.thumb} style={{ backgroundImage: `url(${p.img})` }}>
-                <div className={styles.wire} />
+              <div className={styles.thumb}>
+                <img src={p.img} alt={p.name} className={styles.thumbImg} loading="lazy" />
                 <div className={styles.chips}>
                   <span className={styles.nameChip}>{p.name}</span>
                   <span className={styles.roleChip}>{p.role}</span>

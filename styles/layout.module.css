@@ -1,0 +1,11 @@
+.body {
+  position: relative;
+  min-height: 100vh;
+}
+
+.main {
+  position: relative;
+  /* Allow backdrop-filter sampling by ensuring content flows behind sticky navbar */
+  margin-top: 0;
+  padding-top: 0;
+}

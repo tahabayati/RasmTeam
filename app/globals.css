@@ -15,6 +15,11 @@
   font-family: 'you';
   src: url("/Fonts/Birthstone/Birthstone-Regular.ttf");
 }
+@font-face {
+  font-family: 'Nohemi';
+  src: url("/Fonts/Nohemi/Nohemi-Regular-BF6438cc4d0e493.ttf");
+}
+
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;

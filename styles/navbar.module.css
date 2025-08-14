@@ -4,15 +4,18 @@
   --navH: 44px;
   position: sticky;
   top: 12px;
-  z-index: 50;
+  z-index: 999;
+  isolation: isolate;
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 8px;
   white-space: nowrap;
-  margin: 0 auto;
-  width: max-content;
+  margin: 0;
+  width: 100%;
+  margin-bottom: calc(-1 * (var(--navH) + 8px));
+  padding-bottom: calc(var(--navH) + 8px);
   font-family: 'Roboto', sans-serif;
-  isolation: isolate;
 }
 
 .list,
@@ -24,16 +27,21 @@
   gap: clamp(4px, 2vw, 8px);
   padding: 2px 7px;
   border-radius: 9999px;
-  background: linear-gradient(180deg, rgba(255,255,255,.38), rgba(255,255,255,.26));
-  backdrop-filter: blur(12px) saturate(160%);
-  -webkit-backdrop-filter: blur(12px) saturate(160%);
-  border: 1px solid rgba(0,0,0,.1);
   overflow: hidden;
   min-height: var(--navH);
- 
+  background: rgba(255, 255, 255, 0.14);
+  background-clip: padding-box;
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.12),
+    0 2px 16px rgba(0, 0, 0, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(20px) saturate(180%) brightness(1.2);
+  -webkit-backdrop-filter: blur(20px) saturate(180%) brightness(1.2);
+  border: 1px solid rgba(255, 255, 255, 0.18);
 }
+
 .logoImg{
-   filter: brightness(0);
+  filter: brightness(0);
 }
 
 .list::before,
@@ -48,7 +56,6 @@
   pointer-events: none;
 }
 
-/* center pill acts like a div but keeps list semantics */
 .list {
   list-style: none;
   margin: 0;
@@ -58,7 +65,10 @@
   letter-spacing: 0.06em;
   text-transform: uppercase;
 }
-.list li { display: inline-flex; }
+
+.list li { 
+  display: inline-flex; 
+}
 
 .list a,
 .logoLink {
@@ -70,8 +80,11 @@
   opacity: 0.90;
   transition: opacity 0.18s ease;
 }
+
 .list a:hover,
-.logoLink:hover { opacity: 1; }
+.logoLink:hover { 
+  opacity: 1; 
+}
 
 .list a::before,
 .logoLink::before {
@@ -90,13 +103,13 @@
   mask-repeat: repeat;
   mask-position: var(--noiseX, 0) var(--noiseY, 0);
 }
+
 .list a:hover::before,
 .logoLink:hover::before {
   opacity: 1;
   transform: scale(1) rotate(var(--twist,0deg));
 }
 
-/* images inside side pills */
 .logoImg,
 .logoAfterImg {
   display: block;
@@ -106,15 +119,26 @@
   line-height: 0;
 }
 
-/* mobile dock */
+.nav + * {
+  margin-top: calc(-1 * (var(--navH) + 8px));
+  padding-top: calc(var(--navH) + 8px);
+  position: relative;
+  z-index: 0;
+}
+
+@supports not ((-webkit-backdrop-filter: blur(1px)) or (backdrop-filter: blur(1px))) {
+  .list, .logoWrap, .logoWrapAfter { background: rgba(255, 255, 255, 0.95); }
+}
+
 @media (max-width: 500px) {
   .nav {
     --navH: 40px;
     position: fixed;
     top: auto;
     bottom: 12px;
-    left: 50%;
-    transform: translateX(-50%);
+    left: 0;
+    right: 0;
+    transform: none;
   }
   .list { gap: clamp(2px, 1.5vw, 6px); }
   .list a { font-size: 10px; }

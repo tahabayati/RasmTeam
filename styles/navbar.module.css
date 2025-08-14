@@ -13,9 +13,13 @@
   white-space: nowrap;
   margin: 0;
   width: 100%;
+  max-width: 100vw;
   margin-bottom: calc(-1 * (var(--navH) + 8px));
   padding-bottom: calc(var(--navH) + 8px);
-  font-family: 'Roboto', sans-serif;
+  padding-left: 12px;
+  padding-right: 12px;
+  font-family: 'Nohemi', 'Helvetica Neue', 'Roboto', sans-serif;
+  box-sizing: border-box;
 }
 
 .list,
@@ -64,6 +68,8 @@
   font-size: clamp(12px, 2vw, 14px);
   letter-spacing: 0.06em;
   text-transform: uppercase;
+  max-width: 100%;
+  overflow-x: visible;
 }
 
 .list li { 
@@ -130,16 +136,85 @@
   .list, .logoWrap, .logoWrapAfter { background: rgba(255, 255, 255, 0.95); }
 }
 
+/* Tablet responsiveness */
+@media (max-width: 768px) {
+  .nav {
+    gap: 6px;
+  }
+  
+  .logoWrap,
+  .logoWrapAfter {
+    display: none; /* Hide images/logos on tablets and smaller */
+  }
+  
+  .list {
+    padding: 2px clamp(12px, 3vw, 16px);
+  }
+  
+  .list a {
+    padding: 8px clamp(8px, 2.5vw, 12px);
+    font-size: clamp(13px, 2.5vw, 15px);
+  }
+}
+
+/* Mobile responsiveness */
 @media (max-width: 500px) {
   .nav {
     --navH: 40px;
     position: fixed;
     top: auto;
     bottom: 12px;
-    left: 0;
-    right: 0;
+    left: 12px;
+    right: 12px;
     transform: none;
+    justify-content: center;
+    padding-left: 8px;
+    padding-right: 8px;
   }
-  .list { gap: clamp(2px, 1.5vw, 6px); }
-  .list a { font-size: 10px; }
+  
+  .logoWrap,
+  .logoWrapAfter {
+    display: none; /* Ensure images stay hidden on mobile */
+  }
+  
+  .list { 
+    gap: clamp(2px, 1.5vw, 6px);
+    padding: 2px clamp(8px, 2vw, 12px);
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  
+  .list::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .list a { 
+    font-size: 10px;
+    padding: 6px clamp(4px, 1.5vw, 8px);
+    flex-shrink: 0;
+  }
+}
+
+/* Extra small screens */
+@media (max-width: 380px) {
+  .nav {
+    bottom: 8px;
+    left: 8px;
+    right: 8px;
+    padding-left: 4px;
+    padding-right: 4px;
+  }
+  
+  .list {
+    padding: 2px 6px;
+    gap: 2px;
+  }
+  
+  .list a {
+    font-size: 9px;
+    padding: 5px 6px;
+    letter-spacing: 0.04em;
+  }
 }

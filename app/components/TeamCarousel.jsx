@@ -20,7 +20,7 @@ const samplePeople = [
 
 ];
 
-export default function TeamCarousel({ people = samplePeople, autoplayMs = 1600 }) {
+export default function TeamCarousel({ people = samplePeople, autoplayMs = 2200 }) {
   const base = people.length ? people : samplePeople;
   const triple = [...base, ...base, ...base];
 
@@ -33,6 +33,36 @@ export default function TeamCarousel({ people = samplePeople, autoplayMs = 1600 
 
   const [dims, setDims] = useState({ card: 200, gap: 10 });
   const jumpRef = useRef(false);
+
+  // Mobile grid modal state
+  const [selectedMember, setSelectedMember] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const openModal = (member) => {
+    setSelectedMember(member);
+    setIsModalOpen(true);
+    document.body.style.overflow = 'hidden'; // Prevent background scroll
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+    setSelectedMember(null);
+    document.body.style.overflow = 'unset';
+  };
+
+  // Handle keyboard events for modal
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape' && isModalOpen) {
+        closeModal();
+      }
+    };
+
+    if (isModalOpen) {
+      document.addEventListener('keydown', handleKeyDown);
+      return () => document.removeEventListener('keydown', handleKeyDown);
+    }
+  }, [isModalOpen]);
 
   const focusSlot = 1; // second visible card
   const unit = dims.card + dims.gap;
@@ -55,9 +85,15 @@ export default function TeamCarousel({ people = samplePeople, autoplayMs = 1600 
   useEffect(() => {
     const el = trackRef.current;
     if (!el) return;
-    el.style.transition = jumpRef.current ? "none" : "transform 450ms cubic-bezier(.2,.6,0,1)";
+    el.style.transition = jumpRef.current ? "none" : "transform 600ms cubic-bezier(0.25, 0.46, 0.45, 0.94)";
     el.style.transform = `translate3d(${xForIndex(index)}px,0,0)`;
-    jumpRef.current = false;
+    
+    // Reset jumpRef after a brief delay to ensure the jump is processed
+    if (jumpRef.current) {
+      setTimeout(() => {
+        jumpRef.current = false;
+      }, 10);
+    }
   }, [index, unit]);
 
   // normalize AFTER each slide finishes to avoid any visible jump
@@ -65,17 +101,19 @@ export default function TeamCarousel({ people = samplePeople, autoplayMs = 1600 
     const el = trackRef.current;
     if (!el) return;
     const N = base.length;
-    const safeLow = N - 2;
-    const safeHigh = 2 * N + 2;
-
-    const onEnd = () => {
+    
+    const onEnd = (e) => {
+      // Only handle our transform transitions, not child element transitions
+      if (e.target !== el) return;
+      
       const i = idxRef.current;
-      if (i <= safeLow) {
+      // Reset to middle clone when we reach the edges
+      if (i <= 0) {
         jumpRef.current = true;
-        setIndex(i + N);
-      } else if (i >= safeHigh) {
+        setIndex(N); // Jump to middle clone start
+      } else if (i >= 2 * N) {
         jumpRef.current = true;
-        setIndex(i - N);
+        setIndex(N); // Jump to middle clone start
       }
     };
 
@@ -92,33 +130,95 @@ export default function TeamCarousel({ people = samplePeople, autoplayMs = 1600 
 
   return (
     <section className={styles.wrap}>
-      <div className={styles.header}>
-        <h2 className={styles.title}>Team</h2>
-        <div className={styles.controls}>
-          <button aria-label="Previous" className={styles.btn} onClick={() => go(-1)}>
-            <svg width="16" height="16" viewBox="0 0 24 24"><path d="M15 19l-7-7 7-7" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
-          </button>
-          <button aria-label="Next" className={styles.btn} onClick={() => go(1)}>
-            <svg width="16" height="16" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
-          </button>
+      {/* Desktop/Tablet Header and Carousel */}
+      <div className={styles.desktopView}>
+        <div className={styles.header}>
+          <h2 className={styles.title}>Team</h2>
+          <div className={styles.controls}>
+            <button aria-label="Previous" className={styles.btn} onClick={() => go(-1)}>
+              <svg width="16" height="16" viewBox="0 0 24 24"><path d="M15 19l-7-7 7-7" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
+            </button>
+            <button aria-label="Next" className={styles.btn} onClick={() => go(1)}>
+              <svg width="16" height="16" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <div ref={viewportRef} className={styles.viewport}>
+          <div ref={trackRef} className={styles.track}>
+            {triple.map((p, i) => (
+              <figure key={`${p.name}-${i}`} className={styles.card}>
+                <div className={styles.thumb}>
+                  <img src={p.img} alt={p.name} className={styles.thumbImg} loading="lazy" />
+                  <div className={styles.chips}>
+                    <span className={styles.nameChip}>{p.name}</span>
+                    <div className={styles.roleChips}>
+                      {p.role.split(' & ').map((role, roleIndex) => (
+                        <span key={roleIndex} className={styles.roleChip}>
+                          {role.trim()}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </figure>
+            ))}
+          </div>
         </div>
       </div>
 
-      <div ref={viewportRef} className={styles.viewport}>
-        <div ref={trackRef} className={styles.track}>
-          {triple.map((p, i) => (
-            <figure key={`${p.name}-${i}`} className={styles.card}>
-              <div className={styles.thumb}>
-                <img src={p.img} alt={p.name} className={styles.thumbImg} loading="lazy" />
-                <div className={styles.chips}>
-                  <span className={styles.nameChip}>{p.name}</span>
-                  <span className={styles.roleChip}>{p.role}</span>
+      {/* Mobile Grid View */}
+      <div className={styles.mobileView}>
+        <div className={styles.mobileHeader}>
+          <h2 className={styles.title}>Our Team</h2>
+          <p className={styles.subtitle}>Tap to learn more about each member</p>
+        </div>
+        
+        <div className={styles.mobileGrid}>
+          {base.map((member, i) => (
+            <div 
+              key={`mobile-${member.name}-${i}`} 
+              className={styles.gridCard}
+              onClick={() => openModal(member)}
+            >
+              <div className={styles.gridThumb}>
+                <img src={member.img} alt={member.name} className={styles.gridImg} loading="lazy" />
+                <div className={styles.gridOverlay}>
+                  <span className={styles.gridName}>{member.name}</span>
                 </div>
               </div>
-            </figure>
+            </div>
           ))}
         </div>
       </div>
+
+      {/* Modal */}
+      {isModalOpen && selectedMember && (
+        <div className={styles.modalOverlay} onClick={closeModal}>
+          <div className={styles.modalContent} onClick={(e) => e.stopPropagation()}>
+            <button className={styles.modalClose} onClick={closeModal} aria-label="Close">
+              <svg width="24" height="24" viewBox="0 0 24 24">
+                <path d="M18 6L6 18M6 6l12 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+              </svg>
+            </button>
+            
+            <div className={styles.modalImage}>
+              <img src={selectedMember.img} alt={selectedMember.name} className={styles.modalImg} />
+            </div>
+            
+            <div className={styles.modalInfo}>
+              <h3 className={styles.modalName}>{selectedMember.name}</h3>
+              <div className={styles.modalRoles}>
+                {selectedMember.role.split(' & ').map((role, roleIndex) => (
+                  <span key={roleIndex} className={styles.modalRole}>
+                    {role.trim()}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   );
 }

@@ -1,8 +1,8 @@
-
 "use client";
 import { useState } from "react";
 import Link from "next/link";
-import { FiArrowUpRight } from "react-icons/fi";
+import Image from "next/image";
+import { FiArrowUpRight, FiPhone, FiMail } from "react-icons/fi";
 import styles from "../../styles/Footer.module.css";
 
 export default function Footer() {
@@ -60,95 +60,155 @@ export default function Footer() {
   }
 
   return (
-    <footer className={styles.wrap}>
-      <div className={styles.grid}>
-        {/* Left: Contact card */}
-        <section className={styles.contactCard}>
-          <header className={styles.cardHead}>
-            <h2 className={styles.cardTitle}><span>Contact</span> <span>Us</span></h2>
-            <p className={styles.cardSub}>Tell us about your project. We’ll reply shortly.</p>
-          </header>
+    <footer className={styles.footer}>
+      <div className={styles.container}>
+        {/* Left Section: Contact Form (2/3 width) */}
+        <section className={styles.contactSection}>
+          <div className={styles.contactHeader}>
+            <h2 className={styles.contactTitle}>
+              <span>Get In</span>
+              <span>Touch</span>
+            </h2>
+            <p className={styles.contactSubtitle}>
+              Ready to bring your vision to life? Share your project details and let's create something extraordinary together.
+            </p>
+            
+            {/* Contact Info */}
+            <div className={styles.contactInfo}>
+              <Link href="tel:+9890000000" className={styles.contactInfoItem}>
+                <FiPhone className={styles.contactIcon} />
+                <span>98 9000 0000</span>
+              </Link>
+              <Link href="mailto:info@rasmteam.com" className={styles.contactInfoItem}>
+                <FiMail className={styles.contactIcon} />
+                <span>info@rasmteam.com</span>
+              </Link>
+            </div>
+          </div>
+          
           <form onSubmit={onContactSubmit} className={styles.contactForm}>
-            <div className={styles.fieldsRow}>
-              <input
-                type="text"
-                placeholder="Your name"
-                className={styles.fieldInput}
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                required
-                disabled={contactStatus === "loading"}
-              />
-              <input
-                type="email"
-                placeholder="you@example.com"
-                className={styles.fieldInput}
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
+            <div className={styles.inputRow}>
+              <div className={styles.inputGroup}>
+                <label htmlFor="contact-name" className={styles.label}>Name</label>
+                <input
+                  id="contact-name"
+                  type="text"
+                  placeholder="Your full name"
+                  className={styles.input}
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  required
+                  disabled={contactStatus === "loading"}
+                />
+              </div>
+              <div className={styles.inputGroup}>
+                <label htmlFor="contact-email" className={styles.label}>Email</label>
+                <input
+                  id="contact-email"
+                  type="email"
+                  placeholder="you@example.com"
+                  className={styles.input}
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
+                  disabled={contactStatus === "loading"}
+                />
+              </div>
+            </div>
+            
+            <div className={styles.inputGroup}>
+              <label htmlFor="contact-message" className={styles.label}>Project Details</label>
+              <textarea
+                id="contact-message"
+                placeholder="Tell us about your project, goals, timeline, and budget..."
+                className={styles.textarea}
+                rows={5}
+                value={message}
+                onChange={(e) => setMessage(e.target.value)}
                 required
                 disabled={contactStatus === "loading"}
               />
             </div>
-            <textarea
-              placeholder="Your message"
-              className={styles.textarea}
-              rows={5}
-              value={message}
-              onChange={(e) => setMessage(e.target.value)}
-              required
-              disabled={contactStatus === "loading"}
-            />
-            <div className={styles.actions}>
-              <button type="submit" className={styles.cta} disabled={contactStatus === "loading"}>
-                {contactStatus === "loading" ? "Sending..." : "Send message"}
+            
+            <div className={styles.submitSection}>
+              <button type="submit" className={styles.submitButton} disabled={contactStatus === "loading"}>
+                {contactStatus === "loading" ? "Sending..." : "Send Message"}
+                <FiArrowUpRight className={styles.buttonIcon} />
               </button>
+              {contactStatus === "ok" && <div className={styles.successMessage}>Thanks! We'll be in touch soon.</div>}
+              {contactStatus === "error" && <div className={styles.errorMessage}>Something went wrong. Please try again.</div>}
             </div>
-            {contactStatus === "ok" && <div className={styles.note}>Thanks—message received.</div>}
-            {contactStatus === "error" && <div className={styles.noteError}>Please try again.</div>}
           </form>
         </section>
 
-        {/* Right: Newsletter + Socials */}
-        <section className={styles.sideCard}>
-          <header className={styles.cardHead}>
-            <div className={styles.pill}><span className={styles.logo}>RASM</span></div>
-            <h3 className={styles.sideTitle}>Connect with us</h3>
-          </header>
-
-          <nav className={styles.socials}>
-            <Link href="https://instagram.com" target="_blank" rel="noopener noreferrer">Instagram</Link>
-            <Link href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer">LinkedIn</Link>
-            <Link href="https://x.com" target="_blank" rel="noopener noreferrer">X / Twitter</Link>
-            <Link href="https://www.behance.net" target="_blank" rel="noopener noreferrer">Behance</Link>
-            <Link href="https://dribbble.com" target="_blank" rel="noopener noreferrer">Dribbble</Link>
-            <Link href="https://github.com" target="_blank" rel="noopener noreferrer">GitHub</Link>
-            <Link href="https://youtube.com" target="_blank" rel="noopener noreferrer">YouTube</Link>
-            <Link href="mailto:hello@rasm.team" target="_blank" rel="noopener noreferrer">Email</Link>
-          </nav>
-
-          <div className={styles.newsletterBlock}>
-            <h3 className={styles.sideTitle}>Newsletter</h3>
-            <form onSubmit={onNewsletterSubmit} className={styles.form}>
-              <input
-                type="email"
-                placeholder="Your email"
-                value={nlEmail}
-                onChange={(e) => setNlEmail(e.target.value)}
-                required
-                className={styles.input}
-                disabled={nlStatus === "loading"}
+        {/* Right Section: Logo, Socials & Newsletter (1/3 width) */}
+        <section className={styles.infoSection}>
+          {/* Logo */}
+          <div className={styles.logoSection}>
+            <div className={styles.logoContainer}>
+              <Image 
+                src="/RasmTeam Logo.svg" 
+                alt="RASM Team Logo" 
+                width={160} 
+                height={68} 
+                className={styles.logoImage}
               />
-              <button
-                type="submit"
-                aria-label="Join newsletter"
-                className={styles.send}
-                disabled={nlStatus === "loading"}
-              >
-                <FiArrowUpRight className={styles.icon} />
-              </button>
+            </div>
+          </div>
+
+          {/* Social Links */}
+          <div className={styles.socialsSection}>
+            <h3 className={styles.sectionTitle}>Follow Us</h3>
+            <nav className={styles.socialLinks}>
+              <Link href="tel:+1234567890" className={styles.socialLink}>
+                <FiPhone className={styles.socialIcon} />
+                Phone
+              </Link>
+              <Link href="mailto:info@rasmteam.com" className={styles.socialLink}>
+                <FiMail className={styles.socialIcon} />
+                Email
+              </Link>
+              <Link href="https://instagram.com/rasm.team" target="_blank" rel="noopener noreferrer" className={styles.socialLink}>
+                Instagram
+              </Link>
+              <Link href="https://dribbble.com/rasmteam" target="_blank" rel="noopener noreferrer" className={styles.socialLink}>
+                Dribbble
+              </Link>
+              <Link href="https://www.linkedin.com/company/rasm-team" target="_blank" rel="noopener noreferrer" className={styles.socialLink}>
+                LinkedIn
+              </Link>
+            </nav>
+          </div>
+
+          {/* Newsletter */}
+          <div className={styles.newsletterSection}>
+            <h3 className={styles.sectionTitle}>Stay Updated</h3>
+            <p className={styles.newsletterText}>
+              Get the latest updates on our projects and creative insights.
+            </p>
+            <form onSubmit={onNewsletterSubmit} className={styles.newsletterForm}>
+              <div className={styles.newsletterInputWrapper}>
+                <input
+                  type="email"
+                  placeholder="Your email address"
+                  value={nlEmail}
+                  onChange={(e) => setNlEmail(e.target.value)}
+                  required
+                  className={styles.newsletterInput}
+                  disabled={nlStatus === "loading"}
+                />
+                <button
+                  type="submit"
+                  aria-label="Subscribe to newsletter"
+                  className={styles.newsletterButton}
+                  disabled={nlStatus === "loading"}
+                >
+                  <FiArrowUpRight className={styles.newsletterIcon} />
+                </button>
+              </div>
+              {nlStatus === "ok" && <div className={styles.successMessage}>Welcome to our newsletter!</div>}
+              {nlStatus === "error" && <div className={styles.errorMessage}>Please try again.</div>}
             </form>
-            {nlStatus === "ok" && <div className={styles.note}>Thanks—you're in.</div>}
-            {nlStatus === "error" && <div className={styles.noteError}>Please try again.</div>}
           </div>
         </section>
       </div>

@@ -19,9 +19,9 @@ export default function Projects() {
       images: ['/projects/LudumDare.jpg']
     },
     {
-      id: 'creative-mentor',
-      description: 'Logo, Brand System & Website for a Creative Industry Mentor',
-      tags: ['Graphic Design'],
+      id: 'renzo-cafe',
+      description: 'Visual Identity and Website Design for A Coffee Shop',
+      tags: ['Graphic Design' , 'Development'],
       images: ['/selectedworks/renzo.jpg']
     },
     {
@@ -31,8 +31,8 @@ export default function Projects() {
       images: ['/selectedworks/harandian.jpg']
     },
     {
-      id: 'healthy-living',
-      description: 'Healthy Living Cafe & Meal Plan Brand Design in Muscat (Oman)',
+      id: 'pishtazbakhtar',
+      description: 'Designing a Digital Presence for an Established Casting Factory',
       tags: ['Graphic Design'],
       images: ['/selectedworks/mok.jpg']
     },
@@ -61,26 +61,26 @@ export default function Projects() {
       images: ['/selectedworks/marfaaa.jpg']
     },
     {
-      id: 'landscaping-architecture',
+      id: 'oak-arc',
       description: 'Landscaping & Architecture Company Visual Identity and Website design',
       tags: ['Graphic Design', 'Development'],
       images: ['/projects/OakAndArc.jpg']
     },
     {
-      id: 'photography-studio',
+      id: 'saar-studio',
       description: 'Photography Studio Visual Identity',
       tags: ['Graphic Design'],
       images: ['/projects/SaarStudio.jpg']
     },
     {
       id: 'creative-studio',
-      description: 'Creative Studio Visual Identity & Website Design',
+      description: 'Healthy Living Cafe & Meal Plan Brand Design in Muscat (Oman)',
       tags: ['Graphic Design', 'Development'],
       images: ['/selectedworks/BlueDot.jpg']
     },
     {
-      id: 'coffee-shop',
-      description: 'Visual Identity and Website Design for A Coffee Shop',
+      id: 'HealthCompanyTrue',
+      description: 'Website Design, Visual Identity & Media Production for a Health Company',
       tags: ['Graphic Design'],
       images: ['/selectedworks/Storefront.jpg']
     },

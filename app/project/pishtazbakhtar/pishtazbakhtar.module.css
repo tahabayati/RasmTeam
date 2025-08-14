@@ -1,0 +1,277 @@
+.fullWidthContent {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+  width: 100%;
+  margin-bottom: 32px;
+}
+
+.introSection {
+  font-size: 1.1em;
+  line-height: 1.7;
+  color: #000;
+  max-width: 100%;
+}
+
+.largeText {
+  font-size: clamp(16px, 2vw, 22px);
+  line-height: 1.7;
+  color: #2a2a2a;
+}
+
+.wideImageContainer {
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  margin: 0 auto;
+  width: 100%;
+  max-height: 450px; /* Control maximum height */
+}
+
+.wideImage {
+  width: 100%;
+  height: 100%;
+  max-height: 450px; /* Match container max height */
+  display: block;
+  object-fit: cover; /* Cover to maintain aspect ratio while filling container */
+  transition: transform 0.3s ease;
+}
+
+.wideImageContainer:hover .wideImage {
+  transform: scale(1.02);
+}
+
+.section {
+  width: 100%;
+}
+
+.sectionHeading {
+  font-size: clamp(24px, 3vw, 32px);
+  font-family: 'Nohemi', sans-serif;
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: #000;
+}
+
+.contentWithImage {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  align-items: center;
+}
+
+.textContent {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.sideImage {
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  max-height: 380px; /* Control height for side images */
+}
+
+.contentImage {
+  width: 100%;
+  height: 100%;
+  max-height: 380px; /* Match container max height */
+  display: block;
+  object-fit: cover; /* Cover to maintain aspect ratio while filling container */
+  transition: transform 0.3s ease;
+}
+
+.sideImage:hover .contentImage {
+  transform: scale(1.03);
+}
+
+.bulletList {
+  list-style-type: disc;
+  margin-left: 20px;
+  line-height: 1.8;
+  font-size: clamp(16px, 2vw, 22px);
+}
+
+.bulletList li {
+  margin-bottom: 10px;
+}
+
+/* Image grid section with heading */
+.imageGridSection {
+  width: 100%;
+}
+
+.imageGridSection .sectionHeading {
+  margin-bottom: 24px;
+}
+
+.imageGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
+.gridImage {
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  height: 320px; /* Fixed height for industrial photos */
+}
+
+.gridItemImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.gridImage:hover .gridItemImage {
+  transform: scale(1.05);
+}
+
+.outcomeSection {
+  background: #f8f8f8;
+  padding: 40px;
+  border-radius: 16px;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.outcomeSection .sectionHeading {
+  margin-bottom: 24px;
+}
+
+.outcomeSection .largeText {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* Large screens */
+@media (min-width: 1400px) {
+  .largeText, .bulletList {
+    font-size: 22px;
+  }
+  
+  .sectionHeading {
+    font-size: 32px;
+  }
+  
+  .contentWithImage {
+    gap: 48px;
+  }
+  
+  .fullWidthContent {
+    gap: 64px;
+  }
+  
+  .outcomeSection {
+    padding: 60px;
+  }
+  
+  .imageGrid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* Medium screens */
+@media (max-width: 900px) {
+  .contentWithImage {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  
+  .section:nth-child(odd) .contentWithImage {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+  
+  .fullWidthContent {
+    gap: 32px;
+  }
+  
+  .outcomeSection {
+    padding: 32px;
+  }
+  
+  .wideImageContainer,
+  .wideImage {
+    max-height: 380px; /* Slightly smaller on medium screens */
+  }
+  
+  .sideImage,
+  .contentImage {
+    max-height: 320px;
+  }
+  
+  .gridImage {
+    height: 280px;
+  }
+}
+
+/* Small screens */
+@media (max-width: 768px) {
+  .sectionHeading {
+    font-size: 24px;
+    margin-bottom: 16px;
+  }
+  
+  .fullWidthContent {
+    gap: 24px;
+  }
+  
+  .outcomeSection {
+    padding: 24px;
+  }
+  
+  .wideImageContainer,
+  .wideImage {
+    max-height: 320px; /* Even smaller on small screens */
+  }
+  
+  .sideImage,
+  .contentImage {
+    max-height: 280px;
+  }
+  
+  .gridImage {
+    height: 240px;
+  }
+}
+
+/* Extra small screens */
+@media (max-width: 500px) {
+  .sectionHeading {
+    font-size: 22px;
+    margin-bottom: 14px;
+  }
+  
+  .fullWidthContent {
+    gap: 20px;
+  }
+  
+  .outcomeSection {
+    padding: 20px;
+  }
+  
+  .wideImageContainer,
+  .wideImage {
+    max-height: 240px; /* Much smaller on mobile */
+  }
+  
+  .sideImage,
+  .contentImage {
+    max-height: 220px;
+  }
+  
+  .imageGrid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  
+  .gridImage {
+    height: 220px;
+  }
+}

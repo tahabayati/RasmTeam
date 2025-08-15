@@ -1,21 +1,96 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
 import styles from "../../styles/hero.module.css";
+import SkeletonLoader from "./SkeletonLoader";
 
 export default function VideoHero() {
   const ref = useRef(null);
   const vidRef = useRef(null);
   const [fallback, setFallback] = useState(false);
+  const [isVideoLoaded, setIsVideoLoaded] = useState(false);
+  const [loadingProgress, setLoadingProgress] = useState(0);
+  const [isLoaderVisible, setIsLoaderVisible] = useState(true);
+  const [fadeOutStarted, setFadeOutStarted] = useState(false);
 
   useEffect(() => {
     const v = vidRef.current;
-    if (v) v.play().catch(() => {});
-    const onError = () => setFallback(true);
-    const onLoadedData = () => setFallback(false);
     if (v) {
+      const onError = () => {
+        setFallback(true);
+        handleVideoLoaded(); // Hide loader even on error
+      };
+      
+      const onLoadedData = () => {
+        setFallback(false);
+        handleVideoLoaded();
+        setLoadingProgress(100);
+        v.play().catch(() => {});
+      };
+      
+      const onProgress = () => {
+        if (v.buffered.length > 0) {
+          const buffered = v.buffered.end(0);
+          const duration = v.duration;
+          if (duration > 0) {
+            const progress = (buffered / duration) * 100;
+            setLoadingProgress(Math.min(progress, 95)); // Keep at 95% until fully loaded
+          }
+        }
+      };
+      
+      const onCanPlayThrough = () => {
+        handleVideoLoaded();
+        setLoadingProgress(100);
+      };
+
+      const handleVideoLoaded = () => {
+        setIsVideoLoaded(true);
+        setFadeOutStarted(true);
+        
+        // Remove loader completely after fade-out transition
+        setTimeout(() => {
+          setIsLoaderVisible(false);
+        }, 800); // Match CSS transition duration
+      };
+
       v.addEventListener("error", onError);
       v.addEventListener("loadeddata", onLoadedData);
+      v.addEventListener("progress", onProgress);
+      v.addEventListener("canplaythrough", onCanPlayThrough);
+      
+      // Simulate loading progress for initial load
+      const progressInterval = setInterval(() => {
+        if (!isVideoLoaded && loadingProgress < 90) {
+          setLoadingProgress(prev => Math.min(prev + Math.random() * 10, 90));
+        } else {
+          clearInterval(progressInterval);
+        }
+      }, 100);
+      
+      return () => {
+        clearInterval(progressInterval);
+        v.removeEventListener("error", onError);
+        v.removeEventListener("loadeddata", onLoadedData);
+        v.removeEventListener("progress", onProgress);
+        v.removeEventListener("canplaythrough", onCanPlayThrough);
+      };
     }
+  }, [isVideoLoaded, loadingProgress]);
+
+  // Prevent scrolling while loader is visible
+  useEffect(() => {
+    if (isLoaderVisible) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [isLoaderVisible]);
+
+  useEffect(() => {
     const onScroll = () => {
       const el = ref.current;
       if (!el) return;
@@ -29,10 +104,6 @@ export default function VideoHero() {
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => {
       window.removeEventListener("scroll", onScroll);
-      if (v) {
-        v.removeEventListener("error", onError);
-        v.removeEventListener("loadeddata", onLoadedData);
-      }
     };
   }, []);
 
@@ -44,30 +115,55 @@ export default function VideoHero() {
   }, []);
 
   return (
-    <section ref={ref} className={styles.hero}>
-      <div className={styles.frame}>
-        {!fallback ? (
-          <video
-            ref={vidRef}
-            className={styles.video}
-            src="/HeroVideo.webm"
-            autoPlay
-            playsInline
-            muted
-            loop
-            preload="metadata"
-            poster="/hero-poster.jpg"
-          />
-        ) : (
-          <div className={styles.wire} aria-hidden="true" />
-        )}
-        <div className={styles.slogan}>
-          <div>CRAFTING</div>
-          <div>SOLUTIONS,</div>
-          <div>SHAPING</div>
-          <div>EXPERIENCES</div>
+    <>
+      {/* Full Screen Loader */}
+      {isLoaderVisible && (
+        <div className={`${styles.fullScreenLoader} ${fadeOutStarted ? styles.fadeOut : ''}`}>
+          <div className={styles.loaderContent}>
+            <div className={styles.loaderLogo}>
+              <img src="/RasmHeaderLogo.webp" alt="RASM" className={styles.loaderLogoImg} />
+            </div>
+            <div className={styles.loadingBarContainer}>
+              <div className={styles.loadingBar}>
+                <div 
+                  className={styles.loadingBarFill} 
+                  style={{ width: `${loadingProgress}%` }}
+                />
+              </div>
+              <div className={styles.loadingPercentage}>
+                {Math.round(loadingProgress)}%
+              </div>
+            </div>
+            <div className={styles.loadingText}>Loading Experience...</div>
+          </div>
         </div>
-      </div>
-    </section>
+      )}
+      
+      <section ref={ref} className={styles.hero}>
+        <div className={styles.frame}>
+          {!fallback ? (
+            <video
+              ref={vidRef}
+              className={styles.video}
+              src="/HeroVideo.webm"
+              autoPlay
+              playsInline
+              muted
+              loop
+              preload="metadata"
+              poster="/hero-poster.jpg"
+            />
+          ) : (
+            <div className={styles.wire} aria-hidden="true" />
+          )}
+          <div className={styles.slogan}>
+            <div>CRAFTING</div>
+            <div>SOLUTIONS,</div>
+            <div>SHAPING</div>
+            <div>EXPERIENCES</div>
+          </div>
+        </div>
+      </section>
+    </>
   );
 }

@@ -10,3 +10,17 @@
   padding-top: 80px;
   z-index: 1;
 }
+
+/* Mobile layout adjustments */
+@media (max-width: 500px) {
+  .main {
+    padding-top: 20px; /* Much less padding since navbar is at bottom */
+    padding-bottom: 80px; /* Add bottom padding for bottom navbar */
+  }
+}
+
+@media (max-width: 768px) and (min-width: 501px) {
+  .main {
+    padding-top: 60px; /* Slightly less padding for tablets */
+  }
+}

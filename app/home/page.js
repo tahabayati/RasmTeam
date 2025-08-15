@@ -3,6 +3,7 @@ import VideoHero from "../components/VideoHero";
 import styles from "../../styles/home.module.css";
 import Link from "next/link";
 import TeamCarousel from "../components/TeamCarousel";
+import SkeletonLoader from "../components/SkeletonLoader";
 import { useEffect } from "react";
 
 export const dynamic = "force-dynamic";
@@ -82,7 +83,7 @@ export default function Home() {
       <p>
        <span className={styles.captionTitle}><strong>Our Creative Vision</strong><br /></span>
         
-        we're not just creators; we're dream weavers and brand architects. Our team is passionate about blending artistic vision with strategic thinking to elevate your brand's presence. Embracing a boutique philosophy, we offer tailored, one-on-one service that transforms ideas into reality.
+        we&apos;re not just creators; we&apos;re dream weavers and brand architects. Our team is passionate about blending artistic vision with strategic thinking to elevate your brand&apos;s presence. Embracing a boutique philosophy, we offer tailored, one-on-one service that transforms ideas into reality.
       </p>
     </figcaption>
     <div className={styles.mobileCaption}>
@@ -90,7 +91,7 @@ export default function Home() {
         <span><strong>Our Creative Vision</strong><br /></span>
 
         
-        we're not just creators; we're dream weavers and brand architects. Our team is passionate about blending artistic vision with strategic thinking to elevate your brand's presence. Embracing a boutique philosophy, we offer tailored, one-on-one service that transforms ideas into reality.
+        we&apos;re not just creators; we&apos;re dream weavers and brand architects. Our team is passionate about blending artistic vision with strategic thinking to elevate your brand&apos;s presence. Embracing a boutique philosophy, we offer tailored, one-on-one service that transforms ideas into reality.
       </p>
     </div>
   </figure>
@@ -108,13 +109,13 @@ export default function Home() {
         <span className={styles.captionTitle}> <strong>Transforming Ideas into Impact</strong><br /></span>
 
        
-        From immersive business consulting to stunning visual identities, industrial photography, videography, and innovative 2D/3D animations, we craft unique solutions that resonate. Join us on a creative journey where your brand's story unfolds with authenticity and flair.
+        From immersive business consulting to stunning visual identities, industrial photography, videography, and innovative 2D/3D animations, we craft unique solutions that resonate. Join us on a creative journey where your brand&apos;s story unfolds with authenticity and flair.
       </p>
     </figcaption>
     <div className={styles.mobileCaption}>
       <p>
         <strong>Transforming Ideas into Impact</strong><br />
-        From immersive business consulting to stunning visual identities, industrial photography, videography, and innovative 2D/3D animations, we craft unique solutions that resonate. Join us on a creative journey where your brand's story unfolds with authenticity and flair.
+        From immersive business consulting to stunning visual identities, industrial photography, videography, and innovative 2D/3D animations, we craft unique solutions that resonate. Join us on a creative journey where your brand&apos;s story unfolds with authenticity and flair.
       </p>
     </div>
   </figure>
@@ -135,7 +136,7 @@ export default function Home() {
             </div>
           </div>
           <p className={styles.boutiqueCopy}>
-            We transform the ordinary into the extraordinary through our boutique approach. Imagine a collaboration where your vision takes center stage, and every detail is crafted with precision and passion. We immerse ourselves in your brand story, building a partnership based on trust and creativity. With direct access to our dedicated team, you're assured swift, seamless communication and bespoke solutions that truly resonate. Discover a creative journey where your ideas come to life in the most vibrant and unique ways.
+            We transform the ordinary into the extraordinary through our boutique approach. Imagine a collaboration where your vision takes center stage, and every detail is crafted with precision and passion. We immerse ourselves in your brand story, building a partnership based on trust and creativity. With direct access to our dedicated team, you&apos;re assured swift, seamless communication and bespoke solutions that truly resonate. Discover a creative journey where your ideas come to life in the most vibrant and unique ways.
           </p>
         </div>
         <hr className={styles.rule} />
@@ -235,7 +236,9 @@ export default function Home() {
       <article className={styles.work} key={idx}>
         <Link href={w.link} className={styles.workLink}>
           <div className={styles.imgWrap}>
-            <img className={styles.workImg} src={w.img} alt={w.description} loading="lazy" />
+            <SkeletonLoader>
+              <img className={styles.workImg} src={w.img} alt={w.description} loading="lazy" />
+            </SkeletonLoader>
             <div className={styles.overlayMeta}>
               <span className={styles.workDesc}>{w.description}</span>
               {w.tags && w.tags.length > 0 && (

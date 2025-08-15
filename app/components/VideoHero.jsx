@@ -62,10 +62,10 @@ export default function VideoHero() {
           <div className={styles.wire} aria-hidden="true" />
         )}
         <div className={styles.slogan}>
-          <div>TELLING</div>
-          <div>STORIES</div>
-          <div>DESIGNING</div>
-          <div>SUCCESS</div>
+          <div>CRAFTING</div>
+          <div>SOLUTIONS,</div>
+          <div>SHAPING</div>
+          <div>EXPERIENCES</div>
         </div>
       </div>
     </section>

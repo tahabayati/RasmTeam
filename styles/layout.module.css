@@ -7,5 +7,6 @@
   position: relative;
   /* Allow backdrop-filter sampling by ensuring content flows behind sticky navbar */
   margin-top: 0;
-  padding-top: 0;
+  padding-top: 80px;
+  z-index: 1;
 }

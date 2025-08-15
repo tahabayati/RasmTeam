@@ -57,7 +57,7 @@ export default function Home() {
       <p>
        <span className={styles.captionTitle}><strong>Our Creative Vision</strong><br /></span>
         
-        we’re not just creators; we’re dream weavers and brand architects. Our team is passionate about blending artistic vision with strategic thinking to elevate your brand’s presence. Embracing a boutique philosophy, we offer tailored, one-on-one service that transforms ideas into reality.
+        we're not just creators; we're dream weavers and brand architects. Our team is passionate about blending artistic vision with strategic thinking to elevate your brand's presence. Embracing a boutique philosophy, we offer tailored, one-on-one service that transforms ideas into reality.
       </p>
     </figcaption>
     <div className={styles.mobileCaption}>
@@ -65,7 +65,7 @@ export default function Home() {
         <span><strong>Our Creative Vision</strong><br /></span>
 
         
-        we’re not just creators; we’re dream weavers and brand architects. Our team is passionate about blending artistic vision with strategic thinking to elevate your brand’s presence. Embracing a boutique philosophy, we offer tailored, one-on-one service that transforms ideas into reality.
+        we're not just creators; we're dream weavers and brand architects. Our team is passionate about blending artistic vision with strategic thinking to elevate your brand's presence. Embracing a boutique philosophy, we offer tailored, one-on-one service that transforms ideas into reality.
       </p>
     </div>
   </figure>
@@ -83,13 +83,13 @@ export default function Home() {
         <span className={styles.captionTitle}> <strong>Transforming Ideas into Impact</strong><br /></span>
 
        
-        From immersive business consulting to stunning visual identities, industrial photography, videography, and innovative 2D/3D animations, we craft unique solutions that resonate. Join us on a creative journey where your brand’s story unfolds with authenticity and flair.
+        From immersive business consulting to stunning visual identities, industrial photography, videography, and innovative 2D/3D animations, we craft unique solutions that resonate. Join us on a creative journey where your brand's story unfolds with authenticity and flair.
       </p>
     </figcaption>
     <div className={styles.mobileCaption}>
       <p>
         <strong>Transforming Ideas into Impact</strong><br />
-        From immersive business consulting to stunning visual identities, industrial photography, videography, and innovative 2D/3D animations, we craft unique solutions that resonate. Join us on a creative journey where your brand’s story unfolds with authenticity and flair.
+        From immersive business consulting to stunning visual identities, industrial photography, videography, and innovative 2D/3D animations, we craft unique solutions that resonate. Join us on a creative journey where your brand's story unfolds with authenticity and flair.
       </p>
     </div>
   </figure>
@@ -110,7 +110,7 @@ export default function Home() {
             </div>
           </div>
           <p className={styles.boutiqueCopy}>
-            We transform the ordinary into the extraordinary through our boutique approach. Imagine a collaboration where your vision takes center stage, and every detail is crafted with precision and passion. We immerse ourselves in your brand story, building a partnership based on trust and creativity. With direct access to our dedicated team, you’re assured swift, seamless communication and bespoke solutions that truly resonate. Discover a creative journey where your ideas come to life in the most vibrant and unique ways.
+            We transform the ordinary into the extraordinary through our boutique approach. Imagine a collaboration where your vision takes center stage, and every detail is crafted with precision and passion. We immerse ourselves in your brand story, building a partnership based on trust and creativity. With direct access to our dedicated team, you're assured swift, seamless communication and bespoke solutions that truly resonate. Discover a creative journey where your ideas come to life in the most vibrant and unique ways.
           </p>
         </div>
         <hr className={styles.rule} />
@@ -227,7 +227,7 @@ export default function Home() {
 
   <div className={styles.moreWrap}>
     <Link href="/projects" className={styles.moreBtn}>
-      View All Projects
+      More
       <svg className={styles.arrow} width="16" height="16" viewBox="0 0 24 24" aria-hidden="true">
         <path d="M5 12h14M13 5l7 7-7 7" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
       </svg>

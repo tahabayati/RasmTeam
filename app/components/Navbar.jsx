@@ -29,7 +29,7 @@ export default function Navbar() {
 
       <div className={styles.logoWrapAfter}>
         <Link href="/" className={styles.logoLink} onMouseEnter={randomize}>
-            WEB DESIGN
+            WEB Agency
         </Link>
       </div>
     </nav>

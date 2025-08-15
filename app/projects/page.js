@@ -20,20 +20,20 @@ export default function Projects() {
     },
     {
       id: 'renzo-cafe',
-      description: 'Visual Identity and Website Design for A Coffee Shop',
-      tags: ['Graphic Design' , 'Development'],
+      description: 'Renzo Cafe: Modern Branding & Digital Experience',
+      tags: ['Graphic Design' , 'Web Design'],
       images: ['/selectedworks/renzo.jpg']
     },
     {
       id: 'fintech-brand',
-      description: 'Crafting a Regional Fintech Brand with Local Roots',
-      tags: ['Graphic Design'],
+      description: 'Logo, Brand System & Website for a Creative Industry Mentor',
+      tags: ['Graphic Design', 'Development'],
       images: ['/selectedworks/harandian.jpg']
     },
     {
       id: 'pishtazbakhtar',
-      description: 'Designing a Digital Presence for an Established Casting Factory',
-      tags: ['Graphic Design'],
+      description: 'Industrial Website Design for Pishtaz Bakhtar',
+      tags: ['Graphic Design', "Media Production"],
       images: ['/selectedworks/mok.jpg']
     },
     {
@@ -43,21 +43,21 @@ export default function Projects() {
       images: ['/selectedworks/besty.jpg']
     },
     {
-      id: 'casting-factory',
-      description: 'Designing a Digital Presence for an Established Casting Factory',
-      tags: ['Development'],
+      id: 'oko-team',
+      description: 'Creative Studio Visual Identity & Website Design',
+      tags: ['Graphic Design'],
       images: ['/selectedworks/oko.jpg']
     },
     {
       id: 'electronics-brand',
       description: 'Visual Identity and E-commerce Design for a Youth-Centered Electronics Brand',
-      tags: ['Graphic Design'],
+      tags: ['Graphic Design', 'Web Design', 'Development'],
       images: ['/selectedworks/buytronics.jpg']
     },
     {
       id: 'health-company',
-      description: 'Website Design, Visual Identity & Media Production for a Health Company',
-      tags: ['Graphic Design', 'Media Production'],
+      description: 'Crafting a Regional Fintech Brand with Local Roots',
+      tags: ['Graphic Design'],
       images: ['/selectedworks/marfaaa.jpg']
     },
     {

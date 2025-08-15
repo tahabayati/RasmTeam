@@ -478,11 +478,15 @@
 .selTitle {
   margin: 0 0 14px;
   width: 100%;
-  font-size: clamp(22px, 19vw, 220px);
+  font-size: clamp(22px, 12vw, 120px);
   font-weight: 600;
   color: #0f0f0f;
   font-family: 'Nohemi';
   text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  letter-spacing: -0.02em;
 }
 
 /* Masonry (variable height, equal column width) */
@@ -496,6 +500,12 @@
 .work {
   break-inside: avoid;
   margin-bottom: clamp(12px, 2vw, 24px);
+}
+
+.workLink {
+  display: block;
+  text-decoration: none;
+  color: inherit;
 }
 
 .imgWrap {
@@ -552,13 +562,13 @@
 
 .workDesc {
   display: block;
-  /* glassmorphism default (flat) */
-  background: rgba(0, 0, 0, 0.05);
+  /* glassmorphism from https://css.glass */
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 16px;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(6.8px);
-  -webkit-backdrop-filter: blur(6.8px);
-  border: 1px solid rgba(0, 0, 0, 0.08);
-  border-radius: 12px;
+  backdrop-filter: blur(8.9px);
+  -webkit-backdrop-filter: blur(8.9px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
   padding: 10px 12px;
   font-size: clamp(13px, 1.8vw, 38px);
   line-height: 1;
@@ -575,6 +585,50 @@
   .overlayMeta { padding: 8px; gap: 6px; }
   .workTag { height: 22px; padding: 0 8px; font-size: 10px; }
   .workDesc { font-size: 14px; line-height: 1.55; }
+}
+
+/* Cursor follower for "View Project" */
+.hoverOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 10;
+  transform: translate(-50%, -50%);
+}
+
+.hoverOverlay::before {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.4'/%3E%3C/svg%3E");
+  opacity: 0.1;
+  pointer-events: none;
+  border-radius: 9999px;
+}
+
+.viewProject {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 16px;
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 9999px;
+  color: #000;
+  font-size: 12px;
+  font-weight: 600;
+  font-family: 'Nohemi';
+  letter-spacing: 0.02em;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  white-space: nowrap;
+}
+
+.imgWrap:hover .hoverOverlay {
+  opacity: 1;
 }
 
 /* Pill title inside image (bottom-left) */

@@ -1,25 +1,50 @@
+"use client";
 import VideoHero from "../components/VideoHero";
 import styles from "../../styles/home.module.css";
 import Link from "next/link";
 import TeamCarousel from "../components/TeamCarousel";
+import { useEffect } from "react";
 
 export const dynamic = "force-dynamic";
 
 export default function Home() {
+  useEffect(() => {
+    const handleMouseMove = (e) => {
+      const hoverOverlays = document.querySelectorAll(`.${styles.hoverOverlay}`);
+      hoverOverlays.forEach((overlay) => {
+        const rect = overlay.closest(`.${styles.imgWrap}`).getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        overlay.style.left = `${x}px`;
+        overlay.style.top = `${y}px`;
+      });
+    };
+
+    const workElements = document.querySelectorAll(`.${styles.imgWrap}`);
+    workElements.forEach((element) => {
+      element.addEventListener('mousemove', handleMouseMove);
+    });
+
+    return () => {
+      workElements.forEach((element) => {
+        element.removeEventListener('mousemove', handleMouseMove);
+      });
+    };
+  }, []);
   const worksData = [
-    { tags: ["Kia Global", "Brand"], description: "Bold brand identity system executed across digital and print touchpoints.", img: "/selectedworks/harandian.jpg" },
-    { tags: ["Skincare", "CGI"], description: "Amber: product CGI with realistic lighting and nuanced materials.", img: "/selectedworks/mok.jpg" },
+    { tags: ["Graphic Design", "Development"], description: "Logo, Brand System & Website for a Creative Industry Mentor", img: "/selectedworks/harandian.jpg", link: "/project/fintech-brand" },
+    { tags: ["Graphic Design", "Media Production"], description: "Industrial Website Design for Pishtaz Bakhtar", img: "/selectedworks/mok.jpg", link: "/project/pishtazbakhtar" },
 
-    { tags: ["Aston Martin", "Campaign"], description: "Valour visual campaign: heritage meets modern performance.", img: "/selectedworks/besty.jpg" },
-    { tags: ["Architecture", "Case Study"], description: "Copper Stair: a spatial narrative in form and function.", img: "/selectedworks/Storefront.jpg" },
+    { tags: ["Graphic Design", "Web Design", "Development"], description: "Branding Assets Design for a Home Appliance E-commerce", img: "/selectedworks/besty.jpg", link: "/project/manufacturer-branding" },
+    { tags: ["Graphic Design"], description: "Website Design, Visual Identity & Media Production for a Health Company", img: "/selectedworks/Storefront.jpg", link: "/project/HealthCompanyTrue" },
 
-    { tags: ["Rimowa", "Product"], description: "Product imagery highlighting engineering precision and craft.", img: "/selectedworks/marfaaa.jpg" },
-    { tags: ["Studio", "Portraits"], description: "Who We Are: portraits capturing the spirit of the team.", img: "/selectedworks/buytronics.jpg" },
-    { tags: ["Research", "Material"], description: "Aggregate: a study in texture, weight, and structure.", img: "/selectedworks/oko.jpg" },
+    { tags: ["Rimowa", "Product"], description: "Crafting a Regional Fintech Brand with Local Roots", img: "/selectedworks/marfaaa.jpg", link: "/project/health-company" },
+    { tags: ["Graphic Design", "Web Design", "Development"], description: "Visual Identity and E-commerce Design for a Youth-Centered Electronics Brand", img: "/selectedworks/buytronics.jpg", link: "/project/electronics-brand" },
+    { tags: ["Graphic Design" , "Development"], description: "Creative Studio Visual Identity & Website Design", img: "/selectedworks/oko.jpg", link: "/project/oko-team" },
 
-    { tags: ["Industrial", "Photography"], description: "Raw Plate: industrial photography celebrating process.", img: "/selectedworks/BlueDot.jpg" },
+    { tags: ["Graphic Design"], description: "Healthy Cafe Brand Design in Muscat, Oman", img: "/selectedworks/BlueDot.jpg", link: "/project/creative-studio" },
 
-    { tags: ["Editorial", "Book"], description: "Timeless / Pleasure: editorial design with a focus on rhythm and pacing.", img: "/selectedworks/renzo.jpg" },
+    { tags: ["Graphic Design", "Web Design"], description: "Renzo Cafe: Modern Branding & Digital Experience", img: "/selectedworks/renzo.jpg", link: "/project/renzo-cafe" },
    
   ];
 
@@ -208,19 +233,24 @@ export default function Home() {
   <div className={styles.masonry}>
     {worksData.map((w, idx) => (
       <article className={styles.work} key={idx}>
-        <div className={styles.imgWrap}>
-          <img className={styles.workImg} src={w.img} alt={w.description} loading="lazy" />
-          <div className={styles.overlayMeta}>
-            <span className={styles.workDesc}>{w.description}</span>
-            {w.tags && w.tags.length > 0 && (
-              <div className={styles.workTags}>
-                {w.tags.map((t, i) => (
-                  <span key={i} className={styles.workTag}>{t}</span>
-                ))}
-              </div>
-            )}
+        <Link href={w.link} className={styles.workLink}>
+          <div className={styles.imgWrap}>
+            <img className={styles.workImg} src={w.img} alt={w.description} loading="lazy" />
+            <div className={styles.overlayMeta}>
+              <span className={styles.workDesc}>{w.description}</span>
+              {w.tags && w.tags.length > 0 && (
+                <div className={styles.workTags}>
+                  {w.tags.map((t, i) => (
+                    <span key={i} className={styles.workTag}>{t}</span>
+                  ))}
+                </div>
+              )}
+            </div>
+            <div className={styles.hoverOverlay}>
+              <span className={styles.viewProject}>View Project</span>
+            </div>
           </div>
-        </div>
+        </Link>
       </article>
     ))}
   </div>

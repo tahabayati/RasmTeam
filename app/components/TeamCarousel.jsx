@@ -28,11 +28,10 @@ export default function TeamCarousel({ people = samplePeople, autoplayMs = 1600 
   const trackRef = useRef(null);
 
   const [index, setIndex] = useState(base.length); // start in middle clone
-  const idxRef = useRef(index);
-  useEffect(() => { idxRef.current = index; }, [index]);
-
   const [dims, setDims] = useState({ card: 200, gap: 10 });
-  const jumpRef = useRef(false);
+  const [isPaused, setIsPaused] = useState(false);
+  
+  const isTransitioning = useRef(false);
 
   const focusSlot = 1; // second visible card
   const unit = dims.card + dims.gap;
@@ -52,43 +51,58 @@ export default function TeamCarousel({ people = samplePeople, autoplayMs = 1600 
     return () => ro.disconnect();
   }, []);
 
+  // Handle transform and infinite loop logic
   useEffect(() => {
     const el = trackRef.current;
     if (!el) return;
-    el.style.transition = jumpRef.current ? "none" : "transform 450ms cubic-bezier(.2,.6,0,1)";
-    el.style.transform = `translate3d(${xForIndex(index)}px,0,0)`;
-    jumpRef.current = false;
-  }, [index, unit]);
-
-  // normalize AFTER each slide finishes to avoid any visible jump
-  useEffect(() => {
-    const el = trackRef.current;
-    if (!el) return;
+    
     const N = base.length;
-    const safeLow = N - 2;
-    const safeHigh = 2 * N + 2;
+    
+    // Set default transition
+    if (!el.style.transition) {
+      el.style.transition = "transform 450ms cubic-bezier(.2,.6,0,1)";
+    }
+    
+    // Apply transform
+    el.style.transform = `translate3d(${xForIndex(index)}px,0,0)`;
+    
+    // Handle infinite loop normalization
+    if (index <= 0) {
+      // We've gone past the beginning, jump to the end of middle section
+      setTimeout(() => {
+        el.style.transition = "none";
+        setIndex(2 * N - 1);
+        setTimeout(() => {
+          el.style.transition = "transform 450ms cubic-bezier(.2,.6,0,1)";
+        }, 50);
+      }, 450);
+    } else if (index >= 3 * N - 1) {
+      // We've gone past the end, jump to the beginning of middle section  
+      setTimeout(() => {
+        el.style.transition = "none";
+        setIndex(N);
+        setTimeout(() => {
+          el.style.transition = "transform 450ms cubic-bezier(.2,.6,0,1)";
+        }, 50);
+      }, 450);
+    }
+  }, [index, unit, base.length]);
 
-    const onEnd = () => {
-      const i = idxRef.current;
-      if (i <= safeLow) {
-        jumpRef.current = true;
-        setIndex(i + N);
-      } else if (i >= safeHigh) {
-        jumpRef.current = true;
-        setIndex(i - N);
-      }
-    };
+  const go = (dir) => {
+    if (isTransitioning.current) return;
+    isTransitioning.current = true;
+    setIndex((prev) => prev + dir);
+    setTimeout(() => {
+      isTransitioning.current = false;
+    }, 500);
+  };
 
-    el.addEventListener("transitionend", onEnd);
-    return () => el.removeEventListener("transitionend", onEnd);
-  }, [base.length]);
-
-  const go = (dir) => setIndex((prev) => prev + dir);
-
+  // Autoplay with pause functionality
   useEffect(() => {
+    if (isPaused) return;
     const id = setInterval(() => go(1), autoplayMs);
     return () => clearInterval(id);
-  }, [autoplayMs]);
+  }, [autoplayMs, isPaused]);
 
   return (
     <section className={styles.wrap}>
@@ -104,7 +118,12 @@ export default function TeamCarousel({ people = samplePeople, autoplayMs = 1600 
         </div>
       </div>
 
-      <div ref={viewportRef} className={styles.viewport}>
+      <div 
+        ref={viewportRef} 
+        className={styles.viewport}
+        onMouseEnter={() => setIsPaused(true)}
+        onMouseLeave={() => setIsPaused(false)}
+      >
         <div ref={trackRef} className={styles.track}>
           {triple.map((p, i) => (
             <figure key={`${p.name}-${i}`} className={styles.card}>

@@ -51,7 +51,14 @@
   border: 1px solid #e9e9e7;
   background: #fff;
   overflow: hidden;
-  transition: border-color .2s ease, box-shadow .3s ease;
+  transition: border-color .2s ease, box-shadow .3s ease, transform .2s ease;
+  cursor: pointer;
+}
+
+.card:hover {
+  border-color: #434A9B;
+  box-shadow: 0 8px 25px rgba(67, 74, 155, 0.15);
+  transform: translateY(-2px);
 }
 
 .thumb {
@@ -88,6 +95,13 @@
   font-size: 12px;
   font-weight: 600;
   letter-spacing: .02em;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s ease;
+}
+
+.card:hover .nameChip {
+  background: #434A9B;
+  color: #fff;
 }
 
 .roleChip {
@@ -108,11 +122,72 @@
   transition: 0.3s;
 }
 
-/* tighter on small screens */
+/* Enhanced mobile responsiveness */
 @media (max-width: 900px) {
-  .wrap { --gap: 4px; }
-  .card { width: clamp(130px, 26vw, 200px); }
+  .wrap { 
+    --gap: 4px; 
+    padding: 16px clamp(12px, 3vw, 24px) 0;
+  }
+  .card { 
+    width: clamp(130px, 26vw, 200px); 
+  }
+  .title {
+    font-size: clamp(20px, 4vw, 28px);
+  }
 }
+
 @media (max-width: 600px) {
-  .card { width: clamp(120px, 44vw, 180px); }
+  .wrap {
+    padding: 12px clamp(8px, 2vw, 16px) 0;
+  }
+  .card { 
+    width: clamp(120px, 44vw, 180px); 
+  }
+  .header {
+    margin-bottom: 8px;
+  }
+  .controls {
+    gap: 4px;
+  }
+  .btn {
+    width: 30px;
+    height: 30px;
+  }
+  .nameChip, .roleChip {
+    font-size: 11px;
+    padding: 4px 8px;
+  }
+}
+
+@media (max-width: 400px) {
+  .card { 
+    width: clamp(110px, 48vw, 160px); 
+  }
+  .nameChip, .roleChip {
+    font-size: 10px;
+    padding: 3px 6px;
+  }
+  .chips {
+    gap: 4px;
+  }
+}
+
+/* Pause indicator */
+.viewport:hover {
+  cursor: grab;
+}
+
+.viewport:active {
+  cursor: grabbing;
+}
+
+/* Focus states for accessibility */
+.btn:focus-visible {
+  outline: 2px solid #434A9B;
+  outline-offset: 2px;
+}
+
+.card:focus-visible {
+  outline: 2px solid #434A9B;
+  outline-offset: 2px;
 }

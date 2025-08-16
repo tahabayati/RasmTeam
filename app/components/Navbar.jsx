@@ -1,5 +1,6 @@
 "use client";
 import Link from "next/link";
+import { useRouter, usePathname } from "next/navigation";
 import styles from "../../styles/navbar.module.css";
 
 function randomize(e) {
@@ -11,7 +12,42 @@ function randomize(e) {
   el.style.setProperty("--noiseY", `${Math.floor(Math.random()*200)}px`);
 }
 
+function scrollToSection(sectionId) {
+  const element = document.getElementById(sectionId);
+  if (element) {
+    element.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start'
+    });
+  }
+}
+
 export default function Navbar() {
+  const router = useRouter();
+  const pathname = usePathname();
+
+  const handleAboutClick = (e) => {
+    e.preventDefault();
+    if (pathname === '/home' || pathname === '/') {
+      scrollToSection('intro');
+    } else {
+      router.push('/home');
+      // Wait for navigation to complete, then scroll
+      setTimeout(() => scrollToSection('intro'), 100);
+    }
+  };
+
+  const handleContactClick = (e) => {
+    e.preventDefault();
+    if (pathname === '/home' || pathname === '/') {
+      scrollToSection('footer');
+    } else {
+      router.push('/home');
+      // Wait for navigation to complete, then scroll
+      setTimeout(() => scrollToSection('footer'), 100);
+    }
+  };
+
   return (
     <nav className={styles.nav}>
       <div className={styles.logoWrap}>
@@ -23,8 +59,16 @@ export default function Navbar() {
       <ul className={styles.list}>
         <li><Link href="/" onMouseEnter={randomize}>Home</Link></li>
         <li><Link href="/projects" onMouseEnter={randomize}>Projects</Link></li>
-        <li><Link href="/about" onMouseEnter={randomize}>About us</Link></li>
-        <li><Link href="/contact" onMouseEnter={randomize}>Contact us</Link></li>
+        <li>
+          <a href="#footer" onClick={handleAboutClick} onMouseEnter={randomize}>
+            About us
+          </a>
+        </li>
+        <li>
+          <a href="#intro" onClick={handleContactClick} onMouseEnter={randomize}>
+            Contact us
+          </a>
+        </li>
       </ul>
 
       <div className={styles.logoWrapAfter}>

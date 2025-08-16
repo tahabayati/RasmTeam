@@ -315,6 +315,7 @@
   letter-spacing: 0.005em;
   color: #0f0f0f;
   font-family: 'Nohemi';
+  margin: 0;
 }
 
 .stack span {
@@ -344,7 +345,7 @@
 }
 
 .boutiqueCopy {
-  transform: translateY(-70px);
+  transform: translateY(0);
   font-size: clamp(16px, 2.1vw, 18px);
   line-height: 1.7;
   margin: 0;

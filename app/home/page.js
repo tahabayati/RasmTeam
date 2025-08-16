@@ -52,7 +52,7 @@ export default function Home() {
   return (
     <section className={styles.wrap}>
       <VideoHero />
-      <section className={styles.intro}>
+      <section id="intro" className={styles.intro}>
         <p className={styles.postHero}>
           We are rasm, dream weavers and brand architects. Our passionate team blends artistic vision
           with strategic thinking to elevate your brand. Embracing a boutique philosophy, we provide

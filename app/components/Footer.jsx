@@ -60,7 +60,7 @@ export default function Footer() {
   }
 
   return (
-    <footer className={styles.footer}>
+    <footer id="footer" className={styles.footer}>
       <div className={styles.container}>
         {/* Left Section: Contact Form (2/3 width) */}
         <section className={styles.contactSection}>

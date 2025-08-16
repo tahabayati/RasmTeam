@@ -20,123 +20,77 @@ const samplePeople = [
 
 ];
 
-export default function TeamCarousel({ people = samplePeople, autoplayMs = 1600 }) {
+export default function TeamCarousel({ people = samplePeople }) {
   const base = people.length ? people : samplePeople;
-  const triple = [...base, ...base, ...base];
 
-  const viewportRef = useRef(null);
-  const trackRef = useRef(null);
-
-  const [index, setIndex] = useState(base.length); // start in middle clone
-  const [dims, setDims] = useState({ card: 200, gap: 10 });
-  const [isPaused, setIsPaused] = useState(false);
-  
-  const isTransitioning = useRef(false);
-
-  const focusSlot = 1; // second visible card
-  const unit = dims.card + dims.gap;
-  const xForIndex = (i) => -i * unit + focusSlot * unit;
+  const [isMobile, setIsMobile] = useState(false);
+  const [showAllMembers, setShowAllMembers] = useState(false);
 
   useLayoutEffect(() => {
-    const measure = () => {
-      const probe = trackRef.current?.firstElementChild;
-      const card = probe ? probe.getBoundingClientRect().width : 200;
-      const cs = trackRef.current ? getComputedStyle(trackRef.current) : null;
-      const gap = cs ? (parseFloat(cs.gap || cs.columnGap) || 10) : 10;
-      setDims({ card, gap });
-    };
-    measure();
-    const ro = new ResizeObserver(measure);
-    if (viewportRef.current) ro.observe(viewportRef.current);
-    return () => ro.disconnect();
+    // Check if mobile
+    const handleResize = () => setIsMobile(window.innerWidth < 450);
+    handleResize(); // Initial check
+    
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  // Handle transform and infinite loop logic
-  useEffect(() => {
-    const el = trackRef.current;
-    if (!el) return;
-    
-    const N = base.length;
-    
-    // Set default transition
-    if (!el.style.transition) {
-      el.style.transition = "transform 450ms cubic-bezier(.2,.6,0,1)";
-    }
-    
-    // Apply transform
-    el.style.transform = `translate3d(${xForIndex(index)}px,0,0)`;
-    
-    // Handle infinite loop normalization
-    if (index <= 0) {
-      // We've gone past the beginning, jump to the end of middle section
-      setTimeout(() => {
-        el.style.transition = "none";
-        setIndex(2 * N - 1);
-        setTimeout(() => {
-          el.style.transition = "transform 450ms cubic-bezier(.2,.6,0,1)";
-        }, 50);
-      }, 450);
-    } else if (index >= 3 * N - 1) {
-      // We've gone past the end, jump to the beginning of middle section  
-      setTimeout(() => {
-        el.style.transition = "none";
-        setIndex(N);
-        setTimeout(() => {
-          el.style.transition = "transform 450ms cubic-bezier(.2,.6,0,1)";
-        }, 50);
-      }, 450);
-    }
-  }, [index, unit, base.length]);
+  // Mobile layout (under 450px)
+  if (isMobile) {
+    const initialShowCount = 6;
+    const displayedMembers = showAllMembers ? base : base.slice(0, initialShowCount);
+    const hasMoreMembers = base.length > initialShowCount;
 
-  const go = (dir) => {
-    if (isTransitioning.current) return;
-    isTransitioning.current = true;
-    setIndex((prev) => prev + dir);
-    setTimeout(() => {
-      isTransitioning.current = false;
-    }, 500);
-  };
+    return (
+      <section className={styles.wrap}>
+        <div className={styles.header}>
+          <h2 className={styles.title}>Team</h2>
+        </div>
+        <div className={styles.mobileGrid}>
+          {displayedMembers.map((person, i) => (
+            <div key={person.name} className={styles.mobileCard}>
+              <div className={styles.mobileAvatar}>
+                <img src={person.img} alt={person.name} className={styles.mobileAvatarImg} loading="lazy" />
+              </div>
+              <div className={styles.mobileInfo}>
+                <h3 className={styles.mobileName}>{person.name}</h3>
+                <p className={styles.mobileRole}>{person.role}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+        {hasMoreMembers && (
+          <div className={styles.mobileShowMore}>
+            <button 
+              className={styles.showMoreBtn}
+              onClick={() => setShowAllMembers(!showAllMembers)}
+            >
+              {showAllMembers ? 'Show Less' : `Show More (${base.length - initialShowCount} more)`}
+            </button>
+          </div>
+        )}
+      </section>
+    );
+  }
 
-  // Autoplay with pause functionality
-  useEffect(() => {
-    if (isPaused) return;
-    const id = setInterval(() => go(1), autoplayMs);
-    return () => clearInterval(id);
-  }, [autoplayMs, isPaused]);
-
+  // Desktop grid layout (450px and above)
   return (
     <section className={styles.wrap}>
       <div className={styles.header}>
         <h2 className={styles.title}>Team</h2>
-        <div className={styles.controls}>
-          <button aria-label="Previous" className={styles.btn} onClick={() => go(-1)}>
-            <svg width="16" height="16" viewBox="0 0 24 24"><path d="M15 19l-7-7 7-7" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
-          </button>
-          <button aria-label="Next" className={styles.btn} onClick={() => go(1)}>
-            <svg width="16" height="16" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
-          </button>
-        </div>
       </div>
-
-      <div 
-        ref={viewportRef} 
-        className={styles.viewport}
-        onMouseEnter={() => setIsPaused(true)}
-        onMouseLeave={() => setIsPaused(false)}
-      >
-        <div ref={trackRef} className={styles.track}>
-          {triple.map((p, i) => (
-            <figure key={`${p.name}-${i}`} className={styles.card}>
-              <div className={styles.thumb}>
-                <img src={p.img} alt={p.name} className={styles.thumbImg} loading="lazy" />
-                <div className={styles.chips}>
-                  <span className={styles.nameChip}>{p.name}</span>
-                  <span className={styles.roleChip}>{p.role}</span>
-                </div>
+      <div className={styles.desktopGrid}>
+        {base.map((person, i) => (
+          <figure key={person.name} className={styles.card}>
+            <div className={styles.thumb}>
+              <img src={person.img} alt={person.name} className={styles.thumbImg} loading="lazy" />
+              <div className={styles.chips}>
+                <span className={styles.nameChip}>{person.name}</span>
+                <span className={styles.roleChip}>{person.role}</span>
               </div>
-            </figure>
-          ))}
-        </div>
+            </div>
+          </figure>
+        ))}
       </div>
     </section>
   );

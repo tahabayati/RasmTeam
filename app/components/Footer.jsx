@@ -75,9 +75,9 @@ export default function Footer() {
             
             {/* Contact Info */}
             <div className={styles.contactInfo}>
-              <Link href="tel:+9890000000" className={styles.contactInfoItem}>
+              <Link href="tel:+971521555528" className={styles.contactInfoItem}>
                 <FiPhone className={styles.contactIcon} />
-                <span>98 9000 0000</span>
+                <span>+971 52 155 5528</span>
               </Link>
               <Link href="mailto:info@rasmteam.com" className={styles.contactInfoItem}>
                 <FiMail className={styles.contactIcon} />
@@ -160,7 +160,7 @@ export default function Footer() {
           <div className={styles.socialsSection}>
             <h3 className={styles.sectionTitle}>Follow Us</h3>
             <nav className={styles.socialLinks}>
-              <Link href="tel:+1234567890" className={styles.socialLink}>
+              <Link href="tel:+971521555528" className={styles.socialLink}>
                 <FiPhone className={styles.socialIcon} />
                 Phone
               </Link>
@@ -168,13 +168,13 @@ export default function Footer() {
                 <FiMail className={styles.socialIcon} />
                 Email
               </Link>
-              <Link href="https://instagram.com/rasm.team" target="_blank" rel="noopener noreferrer" className={styles.socialLink}>
+              <Link href="https://www.instagram.com/rasm_team?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer" className={styles.socialLink}>
                 Instagram
               </Link>
-              <Link href="https://dribbble.com/rasmteam" target="_blank" rel="noopener noreferrer" className={styles.socialLink}>
+              <Link href="https://dribbble.com/rasmdesign" target="_blank" rel="noopener noreferrer" className={styles.socialLink}>
                 Dribbble
               </Link>
-              <Link href="https://www.linkedin.com/company/rasm-team" target="_blank" rel="noopener noreferrer" className={styles.socialLink}>
+              <Link href="https://www.linkedin.com/company/rasm-team/" target="_blank" rel="noopener noreferrer" className={styles.socialLink}>
                 LinkedIn
               </Link>
             </nav>

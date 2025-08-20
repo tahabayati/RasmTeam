@@ -18,6 +18,28 @@
   margin-bottom: 16px;
 }
 
+.typewriter {
+  position: relative;
+  padding-right: 0.08em;
+}
+
+.typewriter:after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 0.02em;
+  bottom: 0.02em;
+  width: 0.08em;
+  background: transparent;
+  border-right: 2px solid currentColor;
+  animation: cursorBlink 0.8s infinite;
+}
+
+@keyframes cursorBlink {
+  0%, 100% { border-color: transparent; }
+  50% { border-color: currentColor; }
+}
+
 .description {
   font-size: clamp(16px, 2.2vw, 18px);
   color: #6b6b6b;

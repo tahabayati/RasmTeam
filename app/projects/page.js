@@ -1,6 +1,7 @@
 import styles from '../../styles/projects.module.css';
 import ProjectsClient from './ProjectsClient';
 import { generatePageMetadata } from '../../lib/metadata';
+import Typewriter from '../components/Typewriter';
 
 export const metadata = generatePageMetadata({
   title: "Our Projects - Creative Portfolio & Case Studies",
@@ -106,7 +107,9 @@ export default function Projects() {
   return (
     <section className={styles.projectsContainer}>
       <div className={styles.header}>
-        <h1 className={styles.title}>Our Projects</h1>
+        <h1 className={styles.title}>
+          Our <Typewriter className={styles.typewriter} words={["Selected", "Latest", "Chosen", "hand-picked"]} /> Projects
+        </h1>
         <p className={styles.description}>
           Explore our diverse portfolio of work across different disciplines.
         </p>

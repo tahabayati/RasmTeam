@@ -1,37 +1,27 @@
-"use client";
 import VideoHero from "../components/VideoHero";
 import styles from "../../styles/home.module.css";
 import Link from "next/link";
 import TeamCarousel from "../components/TeamCarousel";
 import SkeletonLoader from "../components/SkeletonLoader";
-import { useEffect } from "react";
+import HomeClient from "./HomeClient";
+import { generatePageMetadata } from "../../lib/metadata";
 
-export const dynamic = "force-dynamic";
+export const metadata = generatePageMetadata({
+  title: "Rasm - Creative Design & Development Agency",
+  description: "Welcome to RasmTeam (رسم تیم) - Your premier creative agency for branding, digital design, software development, and media production. Discover our innovative solutions and creative excellence.",
+  keywords: [
+    "creative agency",
+    "design studio",
+    "branding agency",
+    "digital solutions",
+    "creative team",
+    "innovative design",
+    "Persian design agency"
+  ],
+  path: "/home",
+});
 
 export default function Home() {
-  useEffect(() => {
-    const handleMouseMove = (e) => {
-      const hoverOverlays = document.querySelectorAll(`.${styles.hoverOverlay}`);
-      hoverOverlays.forEach((overlay) => {
-        const rect = overlay.closest(`.${styles.imgWrap}`).getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-        overlay.style.left = `${x}px`;
-        overlay.style.top = `${y}px`;
-      });
-    };
-
-    const workElements = document.querySelectorAll(`.${styles.imgWrap}`);
-    workElements.forEach((element) => {
-      element.addEventListener('mousemove', handleMouseMove);
-    });
-
-    return () => {
-      workElements.forEach((element) => {
-        element.removeEventListener('mousemove', handleMouseMove);
-      });
-    };
-  }, []);
   const worksData = [
     { tags: ["Graphic Design", "Development"], description: "Logo, Brand System & Website for a Creative Industry Mentor", img: "/selectedworks/harandian.jpg", link: "/project/fintech-brand" },
     { tags: ["Graphic Design", "Media Production"], description: "Industrial Website Design for Pishtaz Bakhtar", img: "/selectedworks/mok.jpg", link: "/project/pishtazbakhtar" },
@@ -50,7 +40,8 @@ export default function Home() {
   ];
 
   return (
-    <section className={styles.wrap}>
+    <HomeClient>
+      <section className={styles.wrap}>
       <VideoHero />
       <section id="intro" className={styles.intro}>
         <p className={styles.postHero}>
@@ -272,5 +263,6 @@ export default function Home() {
 
   <TeamCarousel />
     </section>
+    </HomeClient>
   );
 }

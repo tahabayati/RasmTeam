@@ -1,30 +1,53 @@
-"use client";
 import "../styles/globals.css";
 import styles from "../styles/layout.module.css";
-import Navbar from "./components/Navbar";
-import Footer from "./components/Footer";
-import VideoLoader from "./components/VideoLoader";
-import { useState } from "react";
-export const dynamic = "force-dynamic";
+import { siteConfig, organizationStructuredData, servicesStructuredData } from "../lib/metadata";
+import ClientLayout from "./components/ClientLayout";
+
+export const metadata = {
+  title: siteConfig.name,
+  description: siteConfig.description,
+  keywords: siteConfig.keywords.join(", "),
+  authors: siteConfig.authors,
+  creator: siteConfig.creator,
+  metadataBase: new URL(siteConfig.url),
+  alternates: {
+    canonical: siteConfig.url,
+  },
+  openGraph: siteConfig.openGraph,
+  twitter: siteConfig.twitter,
+  verification: siteConfig.verification,
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+};
 
 export default function RootLayout({ children }) {
-  const [videoLoaded, setVideoLoaded] = useState(false);
-
-  const handleVideoLoaded = () => {
-    setVideoLoaded(true);
-  };
-
   return (
     <html lang="en">
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(organizationStructuredData),
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(servicesStructuredData),
+          }}
+        />
+      </head>
       <body className={styles.body}>
-        {!videoLoaded && <VideoLoader onVideoLoaded={handleVideoLoaded} />}
-        {videoLoaded && (
-          <>
-            <Navbar />
-            <main className={styles.main}>{children}</main>
-            <Footer/>
-          </>
-        )}
+        <ClientLayout>{children}</ClientLayout>
       </body>
     </html>
   );

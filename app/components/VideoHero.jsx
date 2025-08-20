@@ -11,6 +11,19 @@ export default function VideoHero() {
   const [loadingProgress, setLoadingProgress] = useState(0);
   const [isLoaderVisible, setIsLoaderVisible] = useState(true);
   const [fadeOutStarted, setFadeOutStarted] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+
+  // Check if device is mobile
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   useEffect(() => {
     const v = vidRef.current;
@@ -144,8 +157,8 @@ export default function VideoHero() {
           {!fallback ? (
             <video
               ref={vidRef}
-              className={styles.video}
-              src="/HeroVideo.webm"
+              className={`${styles.video} ${isMobile ? styles.mobileVideo : ''}`}
+              src={isMobile ? "/Mobile-HeroVideo.webm" : "/HeroVideo.webm"}
               autoPlay
               playsInline
               muted
@@ -154,7 +167,7 @@ export default function VideoHero() {
               poster="/hero-poster.jpg"
             />
           ) : (
-            <div className={styles.wire} aria-hidden="true" />
+            <div className={`${styles.wire} ${isMobile ? styles.mobileWire : ''}`} aria-hidden="true" />
           )}
           <div className={styles.slogan}>
             <div>CRAFTING</div>

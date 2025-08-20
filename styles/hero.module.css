@@ -240,16 +240,31 @@
   
   .video {
     border-radius: 16px;
+    aspect-ratio: 1/1;
+    object-fit: cover;
   }
   
   .wire {
     border-radius: 16px;
+    aspect-ratio: 1/1;
+
   }
   
   .slogan {
-    padding: 0 4vw;
-    gap: clamp(0.8rem, 2.5vh, 2rem);
-    font-size: clamp(1.2rem, 5vw, 4rem);
+    align-items: 20lex-5tart;
+    padding: 0 5vw;
+    font-size: clamp(1.5rem, 8vw, 10rem);
+    line-height: 1;
+    letter-spacing: -0.00em;
+  }
+  
+  .slogan div {
+    filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.4));
+  }
+  
+  .slogan div:hover {
+    transform: translateY(-3px) scale(1.03);
+    filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.6));
   }
   
   .loaderContent {
@@ -277,16 +292,45 @@
   
   .video {
     border-radius: 12px;
+    aspect-ratio: 1/1;
+    object-fit: cover;
   }
   
   .wire {
     border-radius: 12px;
+    aspect-ratio: 1/1;
   }
   
   .slogan {
-    padding: 0 3vw;
-    gap: clamp(0.6rem, 2vh, 1.5rem);
-    font-size: clamp(1rem, 4.5vw, 3rem);
+    align-items: flex-start;
+    padding: 0 6vw;
+    font-size: clamp(1.2rem, 8vw, 7rem);
+    line-height: 0.7;
+    letter-spacing: -0.00em;
+    top: 70%;
+    transform: translateY(-50%);
+ 
+/* Mobile video styles for 1:1 aspect ratio */
+/* Mobile video styles for 1:1 aspect ratio */
+.mobileVideo {
+  aspect-ratio: 1/1;
+  object-fit: cover;
+  max-width: 100%;
+  max-height: 80vh;
+}
+
+.mobileWire {
+  aspect-ratio: 1/1;
+  max-height: 80vh;
+} 
+  
+  .slogan div {
+    filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.1));
+  }
+  
+  .slogan div:hover {
+    transform: translateY(-2px) scale(1.02);
+    filter: drop-shadow(0 0 12px rgba(255, 255, 255, 0.1));
   }
   
   .loaderContent {
@@ -305,5 +349,5 @@
   .loadingText {
     font-size: 11px;
   }
+  }
 }
- 

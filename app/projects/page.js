@@ -1,14 +1,23 @@
-'use client';
-
-import { useState, useEffect } from 'react';
-import Link from 'next/link';
 import styles from '../../styles/projects.module.css';
+import ProjectsClient from './ProjectsClient';
+import { generatePageMetadata } from '../../lib/metadata';
 
-export const dynamic = "force-dynamic";
+export const metadata = generatePageMetadata({
+  title: "Our Projects - Creative Portfolio & Case Studies",
+  description: "Explore RasmTeam's (رسم تیم) diverse portfolio of creative projects including branding, web design, development, and media production. Discover our innovative solutions across various industries.",
+  keywords: [
+    "creative portfolio",
+    "design projects",
+    "branding cases",
+    "web development portfolio",
+    "graphic design showcase",
+    "creative agency work",
+    "design case studies"
+  ],
+  path: "/projects",
+});
 
 export default function Projects() {
-  const [activeFilter, setActiveFilter] = useState('all');
-  const [isAnimating, setIsAnimating] = useState(false);
 
   // Project data with tags for filtering
   const allProjects = [
@@ -93,51 +102,6 @@ export default function Projects() {
     { id: 'media-production', label: 'Media Production' },
     { id: 'development', label: 'Development' }
   ];
-  
-  // Filter projects based on active filter
-  const getFilteredProjects = () => {
-    if (activeFilter === 'all') {
-      return allProjects;
-    } else {
-      return allProjects.filter(project => {
-        switch(activeFilter) {
-          case 'graphic-design':
-            return project.tags.includes('Graphic Design');
-          case 'media-production':
-            return project.tags.includes('Media Production');
-          case 'development':
-            return project.tags.includes('Development');
-          default:
-            return true;
-        }
-      });
-    }
-  };
-  
-  // Get filtered projects
-  const filteredProjects = getFilteredProjects();
-  
-  // Handle filter click
-  const handleFilterClick = (filterId) => {
-    if (filterId !== activeFilter) {
-      setIsAnimating(true);
-      setActiveFilter(filterId);
-    }
-  };
-  
-  // Handle animation timing
-  useEffect(() => {
-    // Only run effect when isAnimating is true
-    if (!isAnimating) return;
-    
-    // Set a timer to remove the animation class
-    const timer = setTimeout(() => {
-      setIsAnimating(false);
-    }, 300);
-    
-    // Clean up the timer if component unmounts or isAnimating changes
-    return () => clearTimeout(timer);
-  }, [isAnimating]);
 
   return (
     <section className={styles.projectsContainer}>
@@ -148,40 +112,7 @@ export default function Projects() {
         </p>
       </div>
 
-      <div className={styles.filterContainer}>
-        {filters.map((filter) => (
-          <button
-            key={filter.id}
-            className={`${styles.filterButton} ${activeFilter === filter.id ? styles.active : ''}`}
-            onClick={() => handleFilterClick(filter.id)}
-          >
-            {filter.label}
-          </button>
-        ))}
-      </div>
-
-      <div className={`${styles.projectsGrid} ${isAnimating ? styles.animating : ''}`}>
-        {filteredProjects.map((project) => (
-          <Link href={`/project/${project.id}`} key={project.id} className={styles.projectCard}>
-            <div className={styles.imageContainer}>
-              <img 
-                src={project.images[0]} 
-                alt={project.description} 
-                className={styles.projectImage} 
-                loading="lazy"
-              />
-            </div>
-            <div className={styles.projectInfo}>
-              <p className={styles.projectDescription}>{project.description}</p>
-              <div className={styles.projectTags}>
-                {project.tags.map((tag, idx) => (
-                  <span key={idx} className={styles.projectTag}>{tag}</span>
-                ))}
-              </div>
-            </div>
-          </Link>
-        ))}
-      </div>
+      <ProjectsClient allProjects={allProjects} filters={filters} />
     </section>
   );
 }

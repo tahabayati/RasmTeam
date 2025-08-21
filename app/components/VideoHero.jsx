@@ -171,7 +171,7 @@ export default function VideoHero() {
           )}
           <div className={styles.slogan}>
             <div>CRAFTING</div>
-            <div>SOLUTIONS,</div>
+            <div>SOLUTIONS</div>
             <div>SHAPING</div>
             <div>EXPERIENCES</div>
           </div>

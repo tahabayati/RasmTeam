@@ -441,11 +441,14 @@
 
 .svcText { 
   display: none; 
-  background: #f8f9fa;
+  
   color: #2a2a2a;
   padding: 12px 14px;
-  border-radius: 0 0 12px 12px;
-  border-top: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 12px;
+  box-shadow: rgba(0, 0, 0, 0.06) 0px 2px 4px 0px inset;
+
+
+
 }
 
 
@@ -785,7 +788,12 @@
     line-height: 1.5;
     text-align: left;
   }
-  
+  .boutiqueHead{
+
+    justify-content: left;
+
+ 
+  }
   .services {
     padding: 16px;
   }
@@ -800,7 +808,7 @@
   
   .svcText {
     padding: 12px;
-    border-radius: 0 0 8px 8px;
+   
   }
   
   .svcText p {
@@ -860,6 +868,9 @@
 }
 
 @media (max-width: 500px) {
+  .item{
+    margin: 0;
+  }
   .postHero {
     font-size: 18px;
     line-height: 1.4;

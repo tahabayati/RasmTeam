@@ -29,6 +29,12 @@ export const metadata = {
   },
 };
 
+// Ensure correct scaling and breakpoints on mobile and tablets
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
+};
+
 export default function RootLayout({ children }) {
   return (
     <html lang="en">

@@ -5,19 +5,81 @@
 
 @font-face {
   font-family: 'Montserrat';
-  src: url("/Fonts/Montserrat/Montserrat-VariableFont_wght.ttf");
+  src: url("/Fonts/Montserrat/Montserrat-VariableFont_wght.ttf") format('truetype');
+  font-display: swap;
 }
 @font-face {
   font-family: 'Jakarta';
-  src: url("/Fonts/Plus_Jakarta_Sans/PlusJakartaSans-VariableFont_wght.ttf");
+  src: url("/Fonts/Plus_Jakarta_Sans/PlusJakartaSans-VariableFont_wght.ttf") format('truetype');
+  font-display: swap;
 }
 @font-face {
   font-family: 'you';
-  src: url("/Fonts/Birthstone/Birthstone-Regular.ttf");
+  src: url("/Fonts/Birthstone/Birthstone-Regular.ttf") format('truetype');
+  font-display: swap;
 }
+
 @font-face {
   font-family: 'Nohemi';
-  src: url("/Fonts/Nohemi/Nohemi-Regular-BF6438cc4d0e493.ttf");
+  src: url("/Fonts/Nohemi/Nohemi-Thin-BF6438cc577ef3b.otf") format('opentype');
+  font-weight: 100;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Nohemi';
+  src: url("/Fonts/Nohemi/Nohemi-ExtraLight-BF6438cc57e06d5.otf") format('opentype');
+  font-weight: 200;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Nohemi';
+  src: url("/Fonts/Nohemi/Nohemi-Light-BF6438cc583f70b.otf") format('opentype');
+  font-weight: 300;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Nohemi';
+  src: url("/Fonts/Nohemi/Nohemi-Regular-BF6438cc58b98fc.otf") format('opentype');
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Nohemi';
+  src: url("/Fonts/Nohemi/Nohemi-Medium-BF6438cc581a509.otf") format('opentype');
+  font-weight: 500;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Nohemi';
+  src: url("/Fonts/Nohemi/Nohemi-SemiBold-BF6438cc588b5e5.otf") format('opentype');
+  font-weight: 600;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Nohemi';
+  src: url("/Fonts/Nohemi/Nohemi-Bold-BF6438cc5812315.otf") format('opentype');
+  font-weight: 700;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Nohemi';
+  src: url("/Fonts/Nohemi/Nohemi-ExtraBold-BF6438cc58a4c3c.otf") format('opentype');
+  font-weight: 800;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Nohemi';
+  src: url("/Fonts/Nohemi/Nohemi-Black-BF6438cc5874bd2.otf") format('opentype');
+  font-weight: 900;
+  font-display: swap;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -30,15 +92,18 @@
 html,
 body {
   max-width: 100vw;
+  overflow-x: hidden;
 }
 
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Nohemi', 'Arial', 'Helvetica', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  /* Ensure smooth blur transitions */
   will-change: filter;
+  transform: translateZ(0);
 }
 
 /* Smooth blur transitions */
@@ -70,30 +135,19 @@ a {
   perspective: none !important;
 }
 
-/* Ensure scrollbars are visible and functional */
-html {
-  scrollbar-width: auto;
+/* Ensure Nohemi fonts are properly loaded and applied */
+@supports (font-display: swap) {
+  .nohemi-font {
+    font-family: 'Nohemi', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-display: swap;
+  }
 }
 
-body {
-  scrollbar-width: auto;
+/* Font loading fallback */
+.fonts-loaded .nohemi-font {
+  font-family: 'Nohemi', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
 
-::-webkit-scrollbar {
-  width: 12px;
-  height: 12px;
-}
-
-::-webkit-scrollbar-track {
-  background: #f1f1f1;
-  border-radius: 6px;
-}
-
-::-webkit-scrollbar-thumb {
-  background: #c1c1c1;
-  border-radius: 6px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: #a8a8a8;
+.fonts-loading .nohemi-font {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }

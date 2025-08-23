@@ -39,6 +39,27 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <head>
+        <link
+          rel="preload"
+          href="/Fonts/Nohemi/Nohemi-Regular-BF6438cc58b98fc.otf"
+          as="font"
+          type="font/otf"
+          crossOrigin="anonymous"
+        />
+        <link
+          rel="preload"
+          href="/Fonts/Nohemi/Nohemi-Bold-BF6438cc5812315.otf"
+          as="font"
+          type="font/otf"
+          crossOrigin="anonymous"
+        />
+        <link
+          rel="preload"
+          href="/Fonts/Nohemi/Nohemi-Medium-BF6438cc581a509.otf"
+          as="font"
+          type="font/otf"
+          crossOrigin="anonymous"
+        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{

@@ -23,10 +23,10 @@ export const metadata = generatePageMetadata({
 
 export default function Home() {
   const worksData = [
-    { tags: ["Graphic Design", "Development"], description: "Logo, Brand System & Website for a Creative Industry Mentor", img: "/selectedworks/harandian.jpg", link: "/project/fintech-brand" },
-    { tags: ["Graphic Design", "Media Production"], description: "Industrial Website Design for Pishtaz Bakhtar", img: "/selectedworks/mok.jpg", link: "/project/pishtazbakhtar" },
-
     { tags: ["Graphic Design", "Web Design", "Development"], description: "Branding Assets Design for a Home Appliance E-commerce", img: "/selectedworks/besty.jpg", link: "/project/manufacturer-branding" },
+    { tags: ["Graphic Design", "Media Production"], description: "Industrial Website Design for Pishtaz Bakhtar", img: "/selectedworks/mok.jpg", link: "/project/pishtazbakhtar" },
+    { tags: ["Graphic Design", "Development"], description: "Logo, Brand System & Website for a Creative Industry Mentor", img: "/selectedworks/harandian.jpg", link: "/project/fintech-brand" },
+  
     { tags: ["Graphic Design"], description: "Website Design, Visual Identity & Media Production for a Health Company", img: "/selectedworks/Storefront.jpg", link: "/project/HealthCompanyTrue" },
 
     { tags: ["Rimowa", "Product"], description: "Crafting a Regional Fintech Brand with Local Roots", img: "/selectedworks/marfaaa.jpg", link: "/project/health-company" },
@@ -45,9 +45,7 @@ export default function Home() {
       <VideoHero />
       <section id="intro" className={styles.intro}>
         <p className={styles.postHero}>
-          We are rasm, dream weavers and brand architects. Our passionate team blends artistic vision
-          with strategic thinking to elevate your brand. Embracing a boutique philosophy, we provide
-          personalized, one-on-one service to turn your ideas into impactful realities.
+          We are Rasm — builders of powerful solutions and seamless experiences. Our team combines deep technical expertise with a strong design sensibility, delivering platforms, apps, and websites that are both robust and visually compelling. With a focus on precision, reliability, and user-centric design, we turn complex challenges into scalable, impactful digital products.
         </p>
         <div className={styles.tagsRow}>
           <button className={styles.tag}>WEB DESIGN</button>
@@ -74,7 +72,7 @@ export default function Home() {
       <p>
        <span className={styles.captionTitle}><strong>Our Creative Vision</strong><br /></span>
         
-        we&apos;re not just creators; we&apos;re dream weavers and brand architects. Our team is passionate about blending artistic vision with strategic thinking to elevate your brand&apos;s presence. Embracing a boutique philosophy, we offer tailored, one-on-one service that transforms ideas into reality.
+       Our vision is to be the trusted partner for businesses and industries seeking future-ready digital solutions. By combining cutting-edge technology, creative design, and a boutique approach, we shape a digital landscape where functionality, aesthetics, and personalized service thrive in harmony.
       </p>
     </figcaption>
     <div className={styles.mobileCaption}>
@@ -82,7 +80,7 @@ export default function Home() {
         <span><strong>Our Creative Vision</strong><br /></span>
 
         
-        we&apos;re not just creators; we&apos;re dream weavers and brand architects. Our team is passionate about blending artistic vision with strategic thinking to elevate your brand&apos;s presence. Embracing a boutique philosophy, we offer tailored, one-on-one service that transforms ideas into reality.
+        Our vision is to be the trusted partner for businesses and industries seeking future-ready digital solutions. By combining cutting-edge technology, creative design, and a boutique approach, we shape a digital landscape where functionality, aesthetics, and personalized service thrive in harmony.
       </p>
     </div>
   </figure>
@@ -100,13 +98,15 @@ export default function Home() {
         <span className={styles.captionTitle}> <strong>Transforming Ideas into Impact</strong><br /></span>
 
        
-        From immersive business consulting to stunning visual identities, industrial photography, videography, and innovative 2D/3D animations, we craft unique solutions that resonate. Join us on a creative journey where your brand&apos;s story unfolds with authenticity and flair.
+        we have to fix the signin page and sign in problem. the code is not being sent when i deploy it in the web.
+        what should be done?
       </p>
     </figcaption>
     <div className={styles.mobileCaption}>
       <p>
         <strong>Transforming Ideas into Impact</strong><br />
-        From immersive business consulting to stunning visual identities, industrial photography, videography, and innovative 2D/3D animations, we craft unique solutions that resonate. Join us on a creative journey where your brand&apos;s story unfolds with authenticity and flair.
+        we have to fix the signin page and sign in problem. the code is not being sent when i deploy it in the web.
+        what should be done?
       </p>
     </div>
   </figure>
@@ -127,7 +127,7 @@ export default function Home() {
             </div>
           </div>
           <p className={styles.boutiqueCopy}>
-            We transform the ordinary into the extraordinary through our boutique approach. Imagine a collaboration where your vision takes center stage, and every detail is crafted with precision and passion. We immerse ourselves in your brand story, building a partnership based on trust and creativity. With direct access to our dedicated team, you&apos;re assured swift, seamless communication and bespoke solutions that truly resonate. Discover a creative journey where your ideas come to life in the most vibrant and unique ways.
+            We transform the ordinary into the extraordinary through our boutique approach. Imagine a collaboration where your vision takes center stage, and every detail is crafted with precision and passion. We immerse ourselves in your project&apos;s story, building a partnership based on trust and creativity. With direct access to our dedicated team, you&apos;re assured swift, seamless communication and bespoke solutions that truly resonate. Discover a creative journey where your ideas come to life in the most vibrant and unique ways.
           </p>
         </div>
         <hr className={styles.rule} />
@@ -136,26 +136,7 @@ export default function Home() {
   
       <section className={styles.services}>
         <div className={styles.servicesGrid}>
-          <article className={styles.svcCard}>
-            <div className={styles.imgWrap}>
-              <img className={styles.svcImg} src="/OurServices/BrandinServices.jpg" alt="Branding" loading="lazy" />
-              <div className={styles.svcLabel}>Branding</div>
-              <div className={styles.svcFill}>
-                <p>
-                  <span className={styles.captionTitle}><strong>Branding Services</strong><br /></span>
-                  Visual Identity Design: Brand strategy, logo design, and corporate identity.
-                  Graphic Design: Print materials, packaging design, and promotional graphics.
-                </p>
-              </div>
-            </div>
-            <div className={styles.svcText}>
-              <h3 className={styles.svcHeading}><span>Branding</span> <span>Services</span></h3>
-              <p>
-                Visual Identity Design: Brand strategy, logo design, and corporate identity.<br />
-                Graphic Design: Print materials, packaging design, and promotional graphics.
-              </p>
-            </div>
-          </article>
+          
 
           <article className={styles.svcCard}>
             <div className={styles.imgWrap}>
@@ -179,7 +160,7 @@ export default function Home() {
           <article className={styles.svcCard}>
             <div className={styles.imgWrap}>
               <img className={styles.svcImg} src="/OurServices/DigitalServices.jpg" alt="Digital Services" loading="lazy" />
-              <div className={styles.svcLabel}>Digital</div>
+              <div className={styles.svcLabel}>Digital Services</div>
               <div className={styles.svcFill}>
                 <p>
                   <span className={styles.captionTitle}><strong>Digital Services</strong><br /></span>
@@ -195,11 +176,30 @@ export default function Home() {
               </p>
             </div>
           </article>
-
+          <article className={styles.svcCard}>
+            <div className={styles.imgWrap}>
+              <img className={styles.svcImg} src="/OurServices/BrandinServices.jpg" alt="Branding" loading="lazy" />
+              <div className={styles.svcLabel}>Branding Services</div>
+              <div className={styles.svcFill}>
+                <p>
+                  <span className={styles.captionTitle}><strong>Branding Services</strong><br /></span>
+                  Visual Identity Design: Brand strategy, logo design, and corporate identity.
+                  Graphic Design: Print materials, packaging design, and promotional graphics.
+                </p>
+              </div>
+            </div>
+            <div className={styles.svcText}>
+              <h3 className={styles.svcHeading}><span>Branding</span> <span>Services</span></h3>
+              <p>
+                Visual Identity Design: Brand strategy, logo design, and corporate identity.<br />
+                Graphic Design: Print materials, packaging design, and promotional graphics.
+              </p>
+            </div>
+          </article>
           <article className={styles.svcCard}>
             <div className={styles.imgWrap}>
               <img className={styles.svcImg} src="/OurServices/MediaProduction.jpg" alt="Media Production" loading="lazy" />
-              <div className={styles.svcLabel}>Media</div>
+              <div className={styles.svcLabel}>Media Production</div>
               <div className={styles.svcFill}>
                 <p>
                   <span className={styles.captionTitle}><strong>Media Production</strong><br /></span>
@@ -258,9 +258,39 @@ export default function Home() {
     </Link>
   </div>
 
-  <hr className={styles.rule} />
+  
 </section>
 
+  <section className={styles.Collaborators}>
+    <h2 className={styles.title}>Our Collaborators</h2>
+    <div className={styles.collaboratorsGrid}>
+      {/* Placeholder logos - replace with actual collaborator logos */}
+      <img 
+        src="/collaborators/Shabloun.png" 
+        alt="Collaborator 1" 
+        className={styles.collaboratorLogo}
+        loading="lazy"
+      />
+      <img 
+        src="/collaborators/Harandian.png" 
+        alt="Collaborator 2" 
+        className={styles.collaboratorLogo}
+        loading="lazy"
+      />
+      <img 
+        src="/collaborators/Ng.png" 
+        alt="Collaborator 3" 
+        className={styles.collaboratorLogo}
+        loading="lazy"
+      />
+      <img 
+        src="/collaborators/MountWay.png" 
+        alt="Collaborator 4" 
+        className={styles.collaboratorLogo}
+        loading="lazy"
+      />
+    </div>
+  </section>
   <TeamCarousel />
     </section>
     </HomeClient>

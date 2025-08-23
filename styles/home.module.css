@@ -422,11 +422,11 @@
   padding: 8px 14px;
   border-radius: 16px;
   /* glassmorphism (from css.glass) */
-  background: rgba(0, 0, 0, 0.05);
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(6.8px);
-  -webkit-backdrop-filter: blur(6.8px);
-  border: 1px solid rgba(0, 0, 0, 0.08);
+  background: rgba(0, 0, 0, 0.01);
+
+  backdrop-filter: blur(1px);
+  -webkit-backdrop-filter: blur(1px);
+
   font-size: clamp(24px, 3.2vw, 58px);
   font-weight: 600;
   letter-spacing: .01em;
@@ -708,7 +708,7 @@
   margin-top: 0;
   margin-bottom: 0;
   /* text-align: justify; */
-  font-weight: 700;
+  font-weight: 600;
 }
 
 .tagsRow{
@@ -875,6 +875,7 @@
     font-size: 18px;
     line-height: 1.4;
     padding: 0 12px;
+    font-weight: 500;
   }
   
   .tagsRow {
@@ -967,4 +968,62 @@
 .tag:focus-visible{
   outline: 2px solid currentColor;
   outline-offset: 2px;
+}
+
+.Collaborators {
+  padding: 20px clamp(16px, 4vw, 48px) 0;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.collaboratorsGrid {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 100px;
+  align-items: center;
+  justify-content: center;
+}
+
+.collaboratorLogo {
+  max-width: 130px;
+  max-height: 100px;
+  height: auto;
+  filter: grayscale(100%);
+  opacity: 0.7;
+  transition: all 0.3s ease;
+}
+
+.collaboratorLogo:hover {
+  filter: grayscale(0%);
+  opacity: 1;
+  transform: scale(1.05);
+}
+
+@media (max-width: 768px) {
+  .Collaborators {
+    padding: 60px 4%;
+  }
+  
+  .collaboratorsGrid {
+    gap: 30px;
+  }
+  
+  .collaboratorLogo {
+    max-width: 140px;
+  }
+}
+
+@media (max-width: 480px) {
+  .Collaborators {
+    padding: 40px 3%;
+  }
+  
+  .collaboratorsGrid {
+    gap: 20px;
+  }
+  
+  .collaboratorLogo {
+    max-width: 100px;
+  }
 }

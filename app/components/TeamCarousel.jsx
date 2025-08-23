@@ -44,7 +44,7 @@ export default function TeamCarousel({ people = samplePeople }) {
     return (
       <section className={styles.wrap}>
         <div className={styles.header}>
-          <h2 className={styles.title}>Team</h2>
+          <h2 className={styles.title}>Our Team & Collaborators</h2>
         </div>
         <div className={styles.mobileGrid}>
           {displayedMembers.map((person, i) => (
@@ -77,7 +77,7 @@ export default function TeamCarousel({ people = samplePeople }) {
   return (
     <section className={styles.wrap}>
       <div className={styles.header}>
-        <h2 className={styles.title}>Team</h2>
+        <h2 className={styles.title}>Team & Colleagues</h2>
       </div>
       <div className={styles.desktopGrid}>
         {base.map((person, i) => (

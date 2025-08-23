@@ -38,7 +38,7 @@ export default function ScrollBlur() {
   // Apply blur effect to body when scrolling
   useEffect(() => {
     if (isScrolling) {
-      document.body.style.filter = "blur(1.5px)"; // Reduced from 8px to 3px
+      document.body.style.filter = "blur(0px)"; // Reduced from 8px to 3px
       document.body.style.transition = "filter 0s ease-out";
     } else {
       document.body.style.filter = "blur(0px)";

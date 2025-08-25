@@ -73,6 +73,7 @@
  }
  /* simple, slow fade; fixed deformed-grain blob behind text */
  .slogan {
+  font-family: "Nohemi";
    position: absolute;
    top: 50%;
    transform: translateY(-50%);

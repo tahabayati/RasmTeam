@@ -37,20 +37,13 @@ export default function ScrollBlur() {
 
   // Apply blur effect to body when scrolling
   useEffect(() => {
-    if (isScrolling) {
-      document.body.style.filter = "blur(0px)"; // Reduced from 8px to 3px
-      document.body.style.transition = "filter 0s ease-out";
-    } else {
-      document.body.style.filter = "blur(0px)";
-      document.body.style.transition = "filter 0s ease-in"; // Reduced from 0.3s to 0.2s
-    }
+    // Do not modify body.style.filter or transitions
   }, [isScrolling]);
 
   // Cleanup on unmount
   useEffect(() => {
     return () => {
-      document.body.style.filter = "";
-      document.body.style.transition = "";
+      // No cleanup needed since we don't modify body styles
     };
   }, []);
 

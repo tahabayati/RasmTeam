@@ -1,10 +1,16 @@
 "use client";
 import { useState, useEffect } from "react";
+import { createPortal } from "react-dom";
 import styles from "../../styles/videoLoader.module.css";
 
 export default function VideoLoader({ onVideoLoaded }) {
   const [loadingProgress, setLoadingProgress] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   useEffect(() => {
     const video = document.createElement('video');
@@ -23,11 +29,10 @@ export default function VideoLoader({ onVideoLoaded }) {
       setTimeout(() => {
         setIsLoading(false);
         onVideoLoaded();
-      }, 500); // Small delay for smooth transition
+      }, 500);
     };
 
     const handleError = () => {
-      // If video fails to load, still proceed
       setLoadingProgress(100);
       setTimeout(() => {
         setIsLoading(false);
@@ -38,8 +43,6 @@ export default function VideoLoader({ onVideoLoaded }) {
     video.addEventListener('progress', updateProgress);
     video.addEventListener('canplaythrough', handleCanPlayThrough);
     video.addEventListener('error', handleError);
-
-    // Start loading the video
     video.load();
 
     return () => {
@@ -49,29 +52,25 @@ export default function VideoLoader({ onVideoLoaded }) {
     };
   }, [onVideoLoaded]);
 
-  if (!isLoading) return null;
+  if (!mounted || !isLoading) return null;
 
-  return (
-    <div className={styles.loaderOverlay}>
+  return createPortal(
+    <div className={styles.loaderOverlay} aria-hidden={false}>
       <div className={styles.loaderContent}>
         <div className={styles.logoContainer}>
           <img src="/RasmHeaderLogo.webp" alt="RASM" className={styles.logo} />
         </div>
-        
         <div className={styles.loadingSection}>
           <div className={styles.loadingText}>
             <span className={styles.loadingLabel}>Loading Experience</span>
             <span className={styles.loadingPercentage}>{loadingProgress}%</span>
           </div>
-          
           <div className={styles.progressBar}>
-            <div 
-              className={styles.progressFill} 
-              style={{ width: `${loadingProgress}%` }}
-            />
+            <div className={styles.progressFill} style={{ width: `${loadingProgress}%` }} />
           </div>
         </div>
       </div>
-    </div>
+    </div>,
+    document.body
   );
 }

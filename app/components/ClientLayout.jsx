@@ -35,10 +35,10 @@ export default function ClientLayout({ children }) {
   return (
     <>
       <ScrollBlur />
+      <Navbar />
       {!videoLoaded && <VideoLoader onVideoLoaded={handleVideoLoaded} />}
       {videoLoaded && (
         <>
-          <Navbar />
           <main className={styles.main}>{children}</main>
           <Footer />
         </>

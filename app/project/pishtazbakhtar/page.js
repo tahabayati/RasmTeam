@@ -46,20 +46,20 @@ export default function PishtazBakhtarProject() {
       </div>
       
       <div className={pishtazStyles.fullWidthContent}>
-        {/* Introduction */}
-        <div className={pishtazStyles.introSection}>
-          <p className={pishtazStyles.largeText}>
-            <strong>Pishtaz Bakhtar</strong> is a leading casting factory with over four decades of experience in producing industrial components for various sectors including oil, gas, and automotive industries.
-          </p>
-        </div>
-
-        {/* Feature Image - Using controlled height */}
-        <div className={pishtazStyles.wideImageContainer}>
-          <img 
-            src="/projects/pishtazbakhtar/mok.jpg" 
-            alt="Pishtaz Bakhtar Website Overview" 
-            className={pishtazStyles.wideImage} 
-          />
+        {/* Introduction (Desktop: side image larger; Mobile: stacked) */}
+        <div className={pishtazStyles.introSideLayout}>
+          <div className={pishtazStyles.introTextCompact}>
+            <p className={pishtazStyles.largeText}>
+              <strong>Pishtaz Bakhtar</strong> is a leading casting factory with over four decades of experience in producing industrial components for various sectors including oil, gas, and automotive industries.
+            </p>
+          </div>
+          <div className={pishtazStyles.introHeroImage}>
+            <img 
+              src="/projects/pishtazbakhtar/mok.jpg" 
+              alt="Pishtaz Bakhtar Website Overview" 
+              className={pishtazStyles.introHeroImageEl}
+            />
+          </div>
         </div>
         
         {/* Project Overview */}

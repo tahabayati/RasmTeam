@@ -41,21 +41,24 @@ export default function HealthyLivingProject() {
       
       <div className={healthyStyles.fullWidthContent}>
         {/* Introduction */}
-        <div className={healthyStyles.introSection}>
-          <p className={healthyStyles.largeText}>
-            <strong>Blue Dot</strong> is a health-focused café and meal plan brand based in Muscat, Oman, offering curated diet plans alongside an in-store café experience centered on community.
-          </p>
+   
+        <div className={healthyStyles.section}>
+          <div className={healthyStyles.contentWithImage}>
+          <div className={healthyStyles.sideImage}>
+              <img 
+                src="/projects/healthy-living/1.jpg" 
+                alt="Blue Dot Brand Overview" 
+                className={healthyStyles.contentImage}
+              />
+            </div>
+            <div className={healthyStyles.textContent}>
+              <p className={healthyStyles.largeText}>
+              <strong>Blue Dot</strong> is a health-focused café and meal plan brand based in Muscat, Oman, offering curated diet plans alongside an in-store café experience centered on community.
+              </p>
+            </div>
+          
+          </div>
         </div>
-
-        {/* Feature Image */}
-        <div className={healthyStyles.wideImageContainer}>
-          <img 
-            src="/projects/healthy-living/1.jpg" 
-            alt="Blue Dot Brand Overview" 
-            className={healthyStyles.wideImage} 
-          />
-        </div>
-        
         {/* Project Overview */}
         <div className={healthyStyles.section}>
           <div className={healthyStyles.contentWithImage}>
@@ -120,34 +123,34 @@ export default function HealthyLivingProject() {
             </div>
           </div>
         </div>
-        
-        {/* Wide Image - Packaging */}
-        <div className={healthyStyles.wideImageContainer}>
-          <img 
-            src="/projects/healthy-living/5-768x768.jpg" 
-            alt="Blue Dot Packaging" 
-            className={healthyStyles.wideImage} 
-          />
-        </div>
+
         
         {/* Visual Language */}
         <div className={healthyStyles.section}>
-          <div className={healthyStyles.contentWithImage}>
-            <div className={healthyStyles.textContent}>
-              <h2 className={healthyStyles.sectionHeading}>Visual Language</h2>
-              <p className={healthyStyles.largeText}>
-                The visual language extended this narrative into every aspect of the brand, from the clean, calming color palette to packaging that balanced functional quality with emotional resonance. Since the brand offered daily-delivered diet plans, it was critical to design packaging that met strict food safety and logistics standards — while still feeling personalized and high-end.
-                <br/><br/>
-                The café space itself was envisioned as a hub, and we created visual assets that could carry the brand's spirit across signage, merchandise, and interior cues — reinforcing the message that this is more than a café — it's a lifestyle space.
-              </p>
-            </div>
-            <div className={healthyStyles.sideImage}>
-              <img 
-                src="/projects/healthy-living/original-7490764d221f01928617ea244e847e45-2.webp" 
-                alt="Visual Elements" 
-                className={healthyStyles.contentImage}
-              />
-            </div>
+          <div className={healthyStyles.textContent}>
+            <h2 className={healthyStyles.sectionHeading}>Visual Language</h2>
+            <p className={healthyStyles.largeText}>
+              The visual language extended this narrative into every aspect of the brand, from the clean, calming color palette to packaging that balanced functional quality with emotional resonance. Since the brand offered daily-delivered diet plans, it was critical to design packaging that met strict food safety and logistics standards — while still feeling personalized and high-end.
+              <br/><br/>
+              The café space itself was envisioned as a hub, and we created visual assets that could carry the brand's spirit across signage, merchandise, and interior cues — reinforcing the message that this is more than a café — it's a lifestyle space.
+            </p>
+          </div>
+        </div>
+
+        <div className={healthyStyles.twoImageRow}>
+          <div className={healthyStyles.twoImage}>
+            <img 
+              src="/projects/healthy-living/original-7490764d221f01928617ea244e847e45-2.webp" 
+              alt="Visual Elements" 
+              className={healthyStyles.rowImage}
+            />
+          </div>
+          <div className={healthyStyles.twoImage}>
+            <img 
+              src="/projects/healthy-living/5-768x768.jpg" 
+              alt="Blue Dot Packaging" 
+              className={healthyStyles.rowImage}
+            />
           </div>
         </div>
 

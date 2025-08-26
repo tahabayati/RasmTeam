@@ -66,6 +66,13 @@ export default function OkoTeamProject() {
         {/* Project Overview */}
         <div className={okoStyles.section}>
           <div className={okoStyles.contentWithImage}>
+          <div className={okoStyles.sideImage}>
+              <img 
+                src="/projects/oko-team/02.-Laptop-Mockup-New-Style-Bundle-copy.jpg" 
+                alt="OKO Team Website Mockup" 
+                className={okoStyles.contentImage}
+              />
+            </div>
             <div className={okoStyles.textContent}>
               <h2 className={okoStyles.sectionHeading}>Project Overview</h2>
               <p className={okoStyles.largeText}>
@@ -74,13 +81,7 @@ export default function OkoTeamProject() {
                 Our task was to develop a comprehensive visual identity system and website that would position OKO Team as a forward-thinking creative partner for potential clients.
               </p>
             </div>
-            <div className={okoStyles.sideImage}>
-              <img 
-                src="/projects/oko-team/02.-Laptop-Mockup-New-Style-Bundle-copy.jpg" 
-                alt="OKO Team Website Mockup" 
-                className={okoStyles.contentImage}
-              />
-            </div>
+         
           </div>
         </div>
         
@@ -178,6 +179,13 @@ export default function OkoTeamProject() {
         
         <div className={okoStyles.section}>
           <div className={okoStyles.contentWithImage}>
+          <div className={okoStyles.sideImage}>
+              <img 
+                src="/projects/oko-team/4-scaled.jpg" 
+                alt="OKO Team Digital Presence" 
+                className={okoStyles.contentImage}
+              />
+            </div>
             <div className={okoStyles.textContent}>
               <h2 className={okoStyles.sectionHeading}>Website Design & Digital Presence</h2>
               <p className={okoStyles.largeText}>
@@ -186,13 +194,7 @@ export default function OkoTeamProject() {
                 We implemented smooth animations and interactive elements to create an engaging user experience that reflects OKO Team's creative capabilities. The responsive design ensures optimal viewing across all devices, maintaining visual integrity from desktop to mobile.
               </p>
             </div>
-            <div className={okoStyles.sideImage}>
-              <img 
-                src="/projects/oko-team/4-scaled.jpg" 
-                alt="OKO Team Digital Presence" 
-                className={okoStyles.contentImage}
-              />
-            </div>
+          
           </div>
         </div>
 

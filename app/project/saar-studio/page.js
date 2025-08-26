@@ -43,38 +43,41 @@ export default function SaarStudioProject() {
       </div>
       
       <div className={saarStyles.fullWidthContent}>
-        {/* Introduction */}
-        <div className={saarStyles.introSection}>
-          <p className={saarStyles.largeText}>
-            <strong>Saar Studio</strong>, a child photography studio specializing in newborn photography. Named after the Persian word for "little bird," the brand embodies the essence of new beginnings and gentle care.
-          </p>
-        </div>
 
-        {/* Feature Image - Using controlled height */}
-        <div className={saarStyles.wideImageContainer}>
-          <img 
-            src="/projects/saar-studio/sign.webp" 
-            alt="Saar Studio Logo Sign" 
-            className={saarStyles.wideImage} 
-          />
-        </div>
+        <div className={saarStyles.section}>
+          <div className={saarStyles.contentWithImage}>
+          <div className={saarStyles.sideImage}>
+              <img 
+                src="/projects/saar-studio/sign.webp" 
+                alt="Saar Studio Logo Sign" 
+                className={saarStyles.contentImage}
+              />
+            </div>
+            <div className={saarStyles.textContent}>
+              <p className={saarStyles.largeText}>
+              <strong>Saar Studio</strong>, a child photography studio specializing in newborn photography. Named after the Persian word for "little bird," the brand embodies the essence of new beginnings and gentle care.
+              </p>
+            </div>
         
+          </div>
+        </div>
         {/* Project Overview */}
         <div className={saarStyles.section}>
           <div className={saarStyles.contentWithImage}>
-            <div className={saarStyles.textContent}>
-              <h2 className={saarStyles.sectionHeading}>Project Overview</h2>
-              <p className={saarStyles.largeText}>
-                Saar Studio approached with a clear vision of creating a brand identity that resonates with the innocence and delicate nature of newborns. The goal was to craft a visual experience that reflected not only the purity of childhood but also the studio's commitment to capturing life's tender moments with elegance and care.
-              </p>
-            </div>
-            <div className={saarStyles.sideImage}>
+          <div className={saarStyles.sideImage}>
               <img 
                 src="/projects/saar-studio/bizcard.jpg" 
                 alt="Saar Studio Business Card" 
                 className={saarStyles.contentImage}
               />
             </div>
+            <div className={saarStyles.textContent}>
+              <h2 className={saarStyles.sectionHeading}>Project Overview</h2>
+              <p className={saarStyles.largeText}>
+                Saar Studio approached with a clear vision of creating a brand identity that resonates with the innocence and delicate nature of newborns. The goal was to craft a visual experience that reflected not only the purity of childhood but also the studio's commitment to capturing life's tender moments with elegance and care.
+              </p>
+            </div>
+            
           </div>
         </div>
         

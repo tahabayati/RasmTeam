@@ -49,25 +49,34 @@ export default function ElectronicsBrandProject() {
       </div>
       
       <div className={brandStyles.fullWidthContent}>
-        {/* Introduction */}
-        <div className={brandStyles.introSection}>
-          <p className={brandStyles.largeText}>
-            <strong>Buytronics</strong> is a growing electronics and tech accessories brand based in the UAE, offering practical, high-quality tech solutions for consumers across the Gulf — with a growing focus on younger digital-native audiences.
-          </p>
-        </div>
-
-        {/* Feature Image - Using controlled height */}
-        <div className={brandStyles.wideImageContainer}>
-          <img 
-            src="/projects/electronics-brand/buytronicsWeb3-1.jpg" 
-            alt="Buytronics Website Overview" 
-            className={brandStyles.wideImage} 
-          />
+        {/* Introduction with side image */}
+        <div className={brandStyles.section}>
+          <div className={brandStyles.contentWithImage}>
+            <div className={brandStyles.textContent}>
+              <p className={brandStyles.largeText}>
+                <strong>Buytronics</strong> is a growing electronics and tech accessories brand based in the UAE, offering practical, high-quality tech solutions for consumers across the Gulf — with a growing focus on younger digital-native audiences.
+              </p>
+            </div>
+            <div className={brandStyles.sideImage}>
+              <img 
+                src="/projects/electronics-brand/buytronicsWeb3-1.jpg" 
+                alt="Buytronics Website Overview" 
+                className={brandStyles.contentImage}
+              />
+            </div>
+          </div>
         </div>
         
         {/* Project Overview */}
         <div className={brandStyles.section}>
           <div className={brandStyles.contentWithImage}>
+          <div className={brandStyles.sideImage}>
+              <img 
+                src="/projects/electronics-brand/Ecommerce-Website-Logo_vsriations.jpg" 
+                alt="Logo Variations" 
+                className={brandStyles.contentImage}
+              />
+            </div>
             <div className={brandStyles.textContent}>
               <h2 className={brandStyles.sectionHeading}>Project Overview</h2>
               <p className={brandStyles.largeText}>
@@ -76,13 +85,7 @@ export default function ElectronicsBrandProject() {
                 We began with brand strategy and logo design, and gradually expanded into a comprehensive visual system covering identity, packaging, digital presence, and branded content for both web and social platforms.
               </p>
             </div>
-            <div className={brandStyles.sideImage}>
-              <img 
-                src="/projects/electronics-brand/Ecommerce-Website-Logo_vsriations.jpg" 
-                alt="Logo Variations" 
-                className={brandStyles.contentImage}
-              />
-            </div>
+            
           </div>
         </div>
         
@@ -110,31 +113,29 @@ export default function ElectronicsBrandProject() {
           </div>
         </div>
         
+   
+
         {/* Creative Direction & Design Solutions */}
         <div className={brandStyles.section}>
-          <div className={brandStyles.contentWithImage}>
-            <div className={brandStyles.sideImage}>
-              <div className={brandStyles.gifContainer}>
-                <img 
-                  src="/projects/electronics-brand/Buytroncis-Typeface.gif" 
-                  alt="Buytronics Typeface Animation" 
-                  className={brandStyles.gifImage} 
-                />
-              </div>
-            </div>
-            <div className={brandStyles.textContent}>
-              <h2 className={brandStyles.sectionHeading}>Creative Direction & Design Solutions</h2>
-              <p className={brandStyles.largeText}>
-                Buytronics needed a <strong>modern, bold, and tech-forward identity</strong> — but it also had to reflect its <strong>regional roots and cross-cultural fluency</strong>. Our design team created a custom logo that fuses the <strong>Arabic and English letter 'B'</strong> into a single, minimal form — a nod to the bilingual, cross-market nature of the brand.
-                <br/><br/>
-                The color palette was developed with a <strong>youth-centric approach</strong>, designed to resonate with <strong>Gen Z users in Arabic-speaking countries</strong>. It mixes cool modern tones with electric contrasts — a blend of energy, trust, and tech-edge visual appeal.
-                <br/><br/>
-                We complemented this with a type system that pairs modern legibility with flexibility, allowing for consistent communication across packaging, digital interfaces, and print.
-              </p>
-            </div>
+          <div className={brandStyles.textContent}>
+            <h2 className={brandStyles.sectionHeading}>Creative Direction & Design Solutions</h2>
+            <p className={brandStyles.largeText}>
+              Buytronics needed a <strong>modern, bold, and tech-forward identity</strong> — but it also had to reflect its <strong>regional roots and cross-cultural fluency</strong>. Our design team created a custom logo that fuses the <strong>Arabic and English letter 'B'</strong> into a single, minimal form — a nod to the bilingual, cross-market nature of the brand.
+              <br/><br/>
+              The color palette was developed with a <strong>youth-centric approach</strong>, designed to resonate with <strong>Gen Z users in Arabic-speaking countries</strong>. It mixes cool modern tones with electric contrasts — a blend of energy, trust, and tech-edge visual appeal.
+              <br/><br/>
+              We complemented this with a type system that pairs modern legibility with flexibility, allowing for consistent communication across packaging, digital interfaces, and print.
+            </p>
           </div>
         </div>
-        
+             {/* Creative Direction GIF - Wide container */}
+             <div className={brandStyles.wideGifContainer}>
+          <img 
+            src="/projects/electronics-brand/Buytroncis-Typeface.gif" 
+            alt="Buytronics Typeface Animation" 
+            className={brandStyles.wideGifImage} 
+          />
+        </div>
         {/* Packaging Showcase */}
         <div className={brandStyles.imageGridSection}>
           <h2 className={brandStyles.sectionHeading}>Packaging & Printables: Seamless Integration</h2>
@@ -176,6 +177,13 @@ export default function ElectronicsBrandProject() {
         {/* Branded Assets */}
         <div className={brandStyles.section}>
           <div className={brandStyles.contentWithImage}>
+          <div className={brandStyles.sideImage}>
+          <img 
+            src="/projects/electronics-brand/CODBO6-insta-post.jpg" 
+            alt="Social Media Post Example" 
+            className={brandStyles.contentImage} 
+          />
+        </div>
             <div className={brandStyles.textContent}>
               <h2 className={brandStyles.sectionHeading}>Branded Assets for Social Media & Web</h2>
               <p className={brandStyles.largeText}>
@@ -189,27 +197,23 @@ export default function ElectronicsBrandProject() {
                 Every asset was designed with <strong>format responsiveness and brand consistency</strong> in mind — making it easy for the Buytronics team to publish across platforms while maintaining strong visual identity.
               </p>
             </div>
-            <div className={brandStyles.sideImage}>
-              <div className={brandStyles.gifContainer}>
-                <img 
-                  src="/projects/electronics-brand/Ecommerce-social-media-templates.gif" 
-                  alt="Social Media Templates" 
-                  className={brandStyles.gifImage} 
-                />
-              </div>
-            </div>
+       
           </div>
-        </div>
+             {/* Social Media Examples */}
+     
         
-        {/* Social Media Examples */}
-        <div className={brandStyles.wideImageContainer}>
+        </div>
+
+        {/* Branded Assets GIF - Wide container */}
+        <div className={brandStyles.wideGifContainer}>
           <img 
-            src="/projects/electronics-brand/CODBO6-insta-post.jpg" 
-            alt="Social Media Post Example" 
-            className={brandStyles.wideImage} 
+            src="/projects/electronics-brand/Ecommerce-social-media-templates.gif" 
+            alt="Social Media Templates" 
+            className={brandStyles.wideGifImage} 
           />
         </div>
         
+     
         {/* E-commerce Website */}
         <div className={brandStyles.section}>
           <div className={brandStyles.contentWithImage}>

@@ -43,25 +43,30 @@ export default function ManufacturerBrandingProject() {
       </div>
       
       <div className={brandingStyles.fullWidthContent}>
-        {/* Introduction */}
-        <div className={brandingStyles.introSection}>
-          <p className={brandingStyles.largeText}>
-            <strong>Besty Home</strong> is an e-commerce platform specializing in home appliances and electronics, with a focus on delivering quality products with exceptional customer service.
-          </p>
-        </div>
-
-        {/* Feature Image - Using controlled height */}
-        <div className={brandingStyles.wideImageContainer}>
+        {/* Introduction with bottom-right overlay on image */}
+        <div className={brandingStyles.introOverlayContainer}>
           <img 
             src="/projects/manufacturer-branding/BESTY.jpg" 
             alt="Besty Home Brand Overview" 
-            className={brandingStyles.wideImage} 
+            className={brandingStyles.introOverlayImage}
           />
+          <div className={brandingStyles.introOverlayCaption}>
+            <p className={brandingStyles.introOverlayText}>
+              <strong>Besty Home</strong> is an e-commerce platform specializing in home appliances and electronics, with a focus on delivering quality products with exceptional customer service.
+            </p>
+          </div>
         </div>
         
         {/* Project Overview */}
         <div className={brandingStyles.section}>
           <div className={brandingStyles.contentWithImage}>
+          <div className={brandingStyles.sideImage}>
+              <img 
+                src="/projects/manufacturer-branding/ecommerce-website-tablet-responsive-design.jpg" 
+                alt="Responsive Website Design" 
+                className={brandingStyles.contentImage}
+              />
+            </div>
             <div className={brandingStyles.textContent}>
               <h2 className={brandingStyles.sectionHeading}>Project Overview</h2>
               <p className={brandingStyles.largeText}>
@@ -70,13 +75,7 @@ export default function ManufacturerBrandingProject() {
                 Our challenge was to create a brand system that would work across their e-commerce platform, product packaging, marketing materials, and customer touchpoints, while differentiating them from competitors.
               </p>
             </div>
-            <div className={brandingStyles.sideImage}>
-              <img 
-                src="/projects/manufacturer-branding/ecommerce-website-tablet-responsive-design.jpg" 
-                alt="Responsive Website Design" 
-                className={brandingStyles.contentImage}
-              />
-            </div>
+   
           </div>
         </div>
         
@@ -163,6 +162,13 @@ export default function ManufacturerBrandingProject() {
         {/* Visual Identity */}
         <div className={brandingStyles.section}>
           <div className={brandingStyles.contentWithImage}>
+          <div className={brandingStyles.sideImage}>
+              <img 
+                src="/projects/manufacturer-branding/Untitled-design-768x768.png" 
+                alt="Visual Identity Elements" 
+                className={brandingStyles.contentImage}
+              />
+            </div>
             <div className={brandingStyles.textContent}>
               <h2 className={brandingStyles.sectionHeading}>Visual Identity</h2>
               <p className={brandingStyles.largeText}>
@@ -171,13 +177,7 @@ export default function ManufacturerBrandingProject() {
                 The typography system features clean, highly legible fonts that work well across digital and print applications. We created a comprehensive set of icons and visual elements that help customers navigate product categories and features intuitively.
               </p>
             </div>
-            <div className={brandingStyles.sideImage}>
-              <img 
-                src="/projects/manufacturer-branding/Untitled-design-768x768.png" 
-                alt="Visual Identity Elements" 
-                className={brandingStyles.contentImage}
-              />
-            </div>
+     
           </div>
         </div>
 

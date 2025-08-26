@@ -56,7 +56,7 @@
 
 .contentWithImage {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1.3fr;
   gap: 32px;
   align-items: center;
 }
@@ -72,13 +72,13 @@
   overflow: hidden;
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
   border: 1px solid rgba(0, 0, 0, 0.05);
-  max-height: 380px; /* Control height for side images */
+  max-height: 480px; /* Control height for side images */
 }
 
 .contentImage {
   width: 100%;
   height: 100%;
-  max-height: 380px; /* Match container max height */
+  max-height: 480px; /* Match container max height */
   display: block;
   object-fit: cover; /* Cover to maintain aspect ratio while filling container */
   transition: transform 0.3s ease;
@@ -154,6 +154,28 @@
   margin: 0 auto;
 }
 
+/* Two-image row under full-width text */
+.twoImageRow {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
+.twoImage {
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  height: 480px;
+}
+
+.rowImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
 /* Large screens */
 @media (min-width: 1400px) {
   .largeText, .bulletList {
@@ -218,6 +240,13 @@
   .gridImage {
     height: 280px;
   }
+
+  .twoImageRow {
+    grid-template-columns: 1fr;
+  }
+  .twoImage {
+    height: 320px;
+  }
 }
 
 /* Small screens */
@@ -247,6 +276,14 @@
   
   .gridImage {
     height: 240px;
+  }
+
+  .twoImageRow {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .twoImage {
+    height: 260px;
   }
 }
 
@@ -281,6 +318,14 @@
   }
   
   .gridImage {
+    height: 220px;
+  }
+
+  .twoImageRow {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  .twoImage {
     height: 220px;
   }
 }

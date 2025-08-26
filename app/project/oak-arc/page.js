@@ -43,20 +43,23 @@ export default function OakArcProject() {
       </div>
       
       <div className={oakStyles.fullWidthContent}>
-        {/* Introduction */}
-        <div className={oakStyles.introSection}>
-          <p className={oakStyles.largeText}>
-            <strong>Oak & Arc</strong>, a well-established company specializing in landscaping and plant retail, recognized for its commitment to quality and sustainable green solutions.
-          </p>
-        </div>
-
-        {/* Feature Image - Using controlled height */}
-        <div className={oakStyles.wideImageContainer}>
-          <img 
-            src="/projects/oak-arc/GREEN-OAK-LOGO-05-1.jpg" 
-            alt="Oak & Arc Logo" 
-            className={oakStyles.wideImage} 
-          />
+      
+        <div className={oakStyles.section}>
+          <div className={oakStyles.contentWithImage}>
+          
+            <div className={oakStyles.sideImage}>
+              <img 
+                src="/projects/oak-arc/GREEN-OAK-LOGO-05-1.jpg" 
+                alt="Oak & Arc Logo" 
+                className={oakStyles.contentImage}
+              />
+            </div>
+            <div className={oakStyles.textContent}>
+              <p className={oakStyles.largeText}>
+              <strong>Oak & Arc</strong>, a well-established company specializing in landscaping and plant retail, recognized for its commitment to quality and sustainable green solutions.
+              </p>
+            </div>
+          </div>
         </div>
         
         {/* Project Overview */}
@@ -182,31 +185,31 @@ export default function OakArcProject() {
         </div>
         
         {/* Social Media Design */}
-        <div className={oakStyles.wideImageContainer}>
-          <img 
-            src="/projects/oak-arc/socialmedi.jpg" 
-            alt="Oak & Arc Social Media" 
-            className={oakStyles.wideImage} 
-          />
-        </div>
-        
         <div className={oakStyles.section}>
-          <div className={oakStyles.contentWithImage}>
-            <div className={oakStyles.sideImage}>
-              <img 
-                src="/projects/oak-arc/socialmedi2.jpg" 
-                alt="Oak & Arc Social Media Templates" 
-                className={oakStyles.contentImage}
-              />
-            </div>
-            <div className={oakStyles.textContent}>
-              <h2 className={oakStyles.sectionHeading}>Social Media Design</h2>
-              <p className={oakStyles.largeText}>
-                Instagram templates for posts and stories were created based on Oak & Arc's visual identity. These templates ensured consistency and brand recognition across social platforms while enhancing user engagement.
-                <br/><br/>
-                Designed with the same natural patterns, elegant typography, and color palette, the social media content upheld the brand's aesthetic and messaging in every interaction.
-              </p>
-            </div>
+          <div className={oakStyles.textContent}>
+            <h2 className={oakStyles.sectionHeading}>Social Media Design</h2>
+            <p className={oakStyles.largeText}>
+              Instagram templates for posts and stories were created based on Oak & Arc's visual identity. These templates ensured consistency and brand recognition across social platforms while enhancing user engagement.
+              <br/><br/>
+              Designed with the same natural patterns, elegant typography, and color palette, the social media content upheld the brand's aesthetic and messaging in every interaction.
+            </p>
+          </div>
+        </div>
+
+        <div className={oakStyles.twoImageRow}>
+          <div className={oakStyles.twoImage}>
+            <img 
+              src="/projects/oak-arc/socialmedi.jpg" 
+              alt="Oak & Arc Social Media" 
+              className={oakStyles.rowImage} 
+            />
+          </div>
+          <div className={oakStyles.twoImage}>
+            <img 
+              src="/projects/oak-arc/socialmedi2.jpg" 
+              alt="Oak & Arc Social Media Templates" 
+              className={oakStyles.rowImage}
+            />
           </div>
         </div>
 

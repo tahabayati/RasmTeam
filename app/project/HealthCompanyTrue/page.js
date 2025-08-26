@@ -45,25 +45,37 @@ export default function HealthCompanyTrueProject() {
       </div>
       
       <div className={healthStyles.fullWidthContent}>
-        {/* Introduction */}
-        <div className={healthStyles.introSection}>
-          <p className={healthStyles.largeText}>
-            <strong>DKC</strong> is a leading provider of dental equipment in both the UAE and Iran, distributing high-quality products from world-renowned manufacturers, including Dentis.
-          </p>
-        </div>
 
-        {/* Feature Image - Using controlled height */}
-        <div className={healthStyles.wideImageContainer}>
-          <img 
-            src="/projects/HealthCompanyTrue/webdkc.jpg" 
-            alt="DKC Website Design" 
-            className={healthStyles.wideImage} 
-          />
+
+        {/* Project Overview */}
+        <div className={healthStyles.section}>
+          <div className={healthStyles.contentWithImage}>
+          <div className={healthStyles.sideImage}>
+              <img 
+                src="/projects/HealthCompanyTrue/lighter.jpg" 
+                alt="DKC Branded Item" 
+                className={healthStyles.contentImage}
+              />
+            </div>
+            <div className={healthStyles.textContent}>
+              <p className={healthStyles.largeText}>
+              <strong>DKC</strong> is a leading provider of dental equipment in both the UAE and Iran, distributing high-quality products from world-renowned manufacturers, including Dentis.
+              </p>
+            </div>
+        
+          </div>
         </div>
         
         {/* Project Overview */}
         <div className={healthStyles.section}>
           <div className={healthStyles.contentWithImage}>
+          <div className={healthStyles.sideImage}>
+              <img 
+                src="/projects/HealthCompanyTrue/Storefront-Light-Box-Display-Mockup_2-copy-1024x768.jpg" 
+                alt="DKC Storefront Display" 
+                className={healthStyles.contentImage}
+              />
+            </div>
             <div className={healthStyles.textContent}>
               <h2 className={healthStyles.sectionHeading}>Project Overview</h2>
               <p className={healthStyles.largeText}>
@@ -72,13 +84,7 @@ export default function HealthCompanyTrueProject() {
                 Our work extended across branding, digital design, marketing materials, video production, and event support — ensuring a fully integrated and highly professional presence for both online and offline platforms.
               </p>
             </div>
-            <div className={healthStyles.sideImage}>
-              <img 
-                src="/projects/HealthCompanyTrue/Storefront-Light-Box-Display-Mockup_2-copy-1024x768.jpg" 
-                alt="DKC Storefront Display" 
-                className={healthStyles.contentImage}
-              />
-            </div>
+        
           </div>
         </div>
         
@@ -168,40 +174,39 @@ export default function HealthCompanyTrueProject() {
         
         {/* Packaging */}
         <div className={healthStyles.section}>
-          <div className={healthStyles.contentWithImage}>
-            <div className={healthStyles.textContent}>
-              <h2 className={healthStyles.sectionHeading}>Packaging & Printables: A Reflection of Quality</h2>
-              <p className={healthStyles.largeText}>
-                Packaging and print materials were designed to maintain DKC's premium image. The gradients and curves established in the visual identity were seamlessly integrated into the packaging design, adding a sense of luxury and sophistication.
-                <br/><br/>
-                This cohesive approach extended to all print materials, ensuring a consistent brand message at every customer touchpoint.
-              </p>
-            </div>
-            <div className={healthStyles.sideImage}>
-              <img 
-                src="/projects/HealthCompanyTrue/bagdkc.jpg" 
-                alt="DKC Packaging" 
-                className={healthStyles.contentImage}
-              />
-            </div>
+          <div className={healthStyles.textContent}>
+            <h2 className={healthStyles.sectionHeading}>Packaging & Printables: A Reflection of Quality</h2>
+            <p className={healthStyles.largeText}>
+              Packaging and print materials were designed to maintain DKC's premium image. The gradients and curves established in the visual identity were seamlessly integrated into the packaging design, adding a sense of luxury and sophistication.
+              <br/><br/>
+              This cohesive approach extended to all print materials, ensuring a consistent brand message at every customer touchpoint.
+            </p>
           </div>
         </div>
-        
-        {/* Website Development */}
-        <div className={healthStyles.wideImageContainer}>
-          <img 
-            src="/projects/HealthCompanyTrue/photo_2025-05-20_14-38-27-1024x576.jpg" 
-            alt="DKC Website" 
-            className={healthStyles.wideImage} 
-          />
+
+        <div className={healthStyles.twoImageRowUnequal}>
+          <div className={healthStyles.twoImageSmall}>
+            <img 
+              src="/projects/HealthCompanyTrue/bagdkc.jpg" 
+              alt="DKC Packaging" 
+              className={healthStyles.rowImage}
+            />
+          </div>
+          <div className={healthStyles.twoImageLarge}>
+            <img 
+              src="/projects/HealthCompanyTrue/photo_2025-05-20_14-38-27-1024x576.jpg" 
+              alt="DKC Website" 
+              className={healthStyles.rowImage}
+            />
+          </div>
         </div>
         
         <div className={healthStyles.section}>
           <div className={healthStyles.contentWithImage}>
             <div className={healthStyles.sideImage}>
               <img 
-                src="/projects/HealthCompanyTrue/lighter.jpg" 
-                alt="DKC Branded Item" 
+                src="/projects/HealthCompanyTrue/webdkc.jpg" 
+                alt="DKC Website Design" 
                 className={healthStyles.contentImage}
               />
             </div>

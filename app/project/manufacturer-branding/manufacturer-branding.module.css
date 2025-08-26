@@ -13,6 +13,43 @@
   max-width: 100%;
 }
 
+/* Intro overlay: taller image with bottom-right purple caption */
+.introOverlayContainer {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  width: 100%;
+  height: 660px; /* taller image */
+}
+
+.introOverlayImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* maintain aspect ratio without distortion */
+  display: block;
+}
+
+.introOverlayCaption {
+  position: absolute;
+  left: 16px;
+  bottom: 16px;
+  background: #cfc7ff; /* purple background */
+  color: #222222;
+  padding: 16px 20px;
+  border-radius: 12px;
+  max-width: min(620px, 90%);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  backdrop-filter: saturate(120%);
+}
+
+.introOverlayText {
+  font-size: clamp(14px, 1.6vw, 18px);
+  line-height: 1.6;
+  margin: 0;
+}
+
 .largeText {
   font-size: clamp(16px, 2vw, 22px);
   line-height: 1.7;
@@ -56,7 +93,7 @@
 
 .contentWithImage {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1.5fr;
   gap: 32px;
   align-items: center;
 }
@@ -72,13 +109,13 @@
   overflow: hidden;
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
   border: 1px solid rgba(0, 0, 0, 0.05);
-  max-height: 380px; /* Control height for side images */
+  max-height: 500px; /* Control height for side images */
 }
 
 .contentImage {
   width: 100%;
   height: 100%;
-  max-height: 380px; /* Match container max height */
+  max-height: 500px; /* Match container max height */
   display: block;
   object-fit: cover; /* Cover to maintain aspect ratio while filling container */
   transition: transform 0.3s ease;
@@ -139,7 +176,7 @@
   padding: 24px;
   background: #f7f7f7;
   border-radius: 12px;
-  border-left: 4px solid #fa5c5c;
+  border-left: 4px solid #cfc7ff;
   font-style: italic;
   font-size: clamp(15px, 1.8vw, 20px);
   line-height: 1.6;
@@ -197,6 +234,15 @@
 
 /* Medium screens */
 @media (max-width: 900px) {
+  .introOverlayContainer {
+    height: 420px;
+  }
+  .introOverlayCaption {
+    left: 12px;
+    bottom: 12px;
+    padding: 14px 16px;
+    max-width: 80%;
+  }
   .contentWithImage {
     grid-template-columns: 1fr;
     gap: 24px;
@@ -236,6 +282,14 @@
 
 /* Small screens */
 @media (max-width: 768px) {
+  .introOverlayContainer {
+    height: 360px;
+  }
+  .introOverlayCaption {
+    left: 10px;
+    bottom: 10px;
+    border-radius: 10px;
+  }
   .sectionHeading {
     font-size: 24px;
     margin-bottom: 16px;
@@ -267,6 +321,15 @@
 
 /* Extra small screens */
 @media (max-width: 500px) {
+  .introOverlayContainer {
+    height: 300px;
+  }
+  .introOverlayCaption {
+    left: 8px;
+    bottom: 8px;
+    padding: 10px 12px;
+    max-width: 85%;
+  }
   .sectionHeading {
     font-size: 22px;
     margin-bottom: 14px;

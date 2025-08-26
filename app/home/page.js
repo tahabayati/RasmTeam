@@ -262,7 +262,7 @@ export default function Home() {
 </section>
 
   <section className={styles.Collaborators}>
-    <h2 className={styles.title}>Our Collaborators</h2>
+    
     <div className={styles.collaboratorsGrid}>
       {/* Placeholder logos - replace with actual collaborator logos */}
       <img 

@@ -169,7 +169,7 @@ export default function VideoHero() {
           ) : (
             <div className={`${styles.wire} ${isMobile ? styles.mobileWire : ''}`} aria-hidden="true" />
           )}
-          <div className={styles.slogan}>
+          <div className={styles.slogan}> 
             <div>CRAFTING</div>
             <div>SOLUTIONS</div>
             <div>SHAPING</div>

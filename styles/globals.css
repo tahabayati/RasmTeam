@@ -11,6 +11,14 @@
   font-family: 'Nohemi';
   src: url("/Fonts/Nohemi/Nohemi-Regular-BF6438cc4d0e493.ttf");
 }
+@font-face {
+  font-family: 'Montserrat';
+  src: url("/Fonts/Montserrat/Montserrat-VariableFont_wght.ttf");
+}
+@font-face {
+  font-family: 'Birthstone';
+  src: url("/Fonts/Birthstone/Birthstone-Regular.ttf");
+}
 
 /* Global Reset and Mobile Fixes */
 * {

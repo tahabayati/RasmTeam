@@ -18,7 +18,7 @@ export default function HiradHarandianProject() {
       '/Harandian/Untitled-144.jpg'
     ],
     ctaText: 'We had the pleasure of working with Hirad Harandian to create a brand identity that truly represents his unique position in the gaming and creative industry. The result is a versatile, modern brand system that works across digital and physical touchpoints.',
-    ctaLink: 'https://hiradharandian.com',
+    ctaLink: 'https://hirad-h.com/',
     ctaLinkText: 'Visit Hirad Harandian\'s Website'
   };
   
@@ -43,25 +43,34 @@ export default function HiradHarandianProject() {
       </div>
       
       <div className={harandianStyles.fullWidthContent}>
-        {/* Introduction */}
-        <div className={harandianStyles.introSection}>
-          <p className={harandianStyles.largeText}>
-            Hirad Harandian is a games business expert, startup consultant, and creative entrepreneur with over a decade of experience in the global and regional video game industry. His work spans from game production to mentorship, startup fundraising, and educational content creation.
-          </p>
-        </div>
-
-        {/* Feature Image */}
-        <div className={harandianStyles.featureImageWrapper}>
-          <img 
-            src="/Harandian/Consultant-Personal-Logo.jpg" 
-            alt="Hirad Harandian Logo" 
-            className={harandianStyles.featureImage} 
-          />
+        {/* Intro with Side Image */}
+        <div className={harandianStyles.section}>
+          <div className={harandianStyles.contentWithImage}>
+            <div className={harandianStyles.textContent}>
+              <p className={harandianStyles.largeText}>
+                Hirad Harandian is a games business expert, startup consultant, and creative entrepreneur with over a decade of experience in the global and regional video game industry. His work spans from game production to mentorship, startup fundraising, and educational content creation.
+              </p>
+            </div>
+            <div className={harandianStyles.sideImage}>
+              <img 
+                src="/Harandian/Consultant-Personal-Logo.jpg" 
+                alt="Hirad Harandian Logo" 
+                className={harandianStyles.contentImage}
+              />
+            </div>
+          </div>
         </div>
         
         {/* Project Overview */}
         <div className={harandianStyles.section}>
           <div className={harandianStyles.contentWithImage}>
+          <div className={harandianStyles.sideImage}>
+              <img 
+                src="/Harandian/Untitled-1.jpg" 
+                alt="Brand Identity Design" 
+                className={harandianStyles.contentImage}
+              />
+            </div>
             <div className={harandianStyles.textContent}>
               <h2 className={harandianStyles.sectionHeading}>Project Overview</h2>
               <p className={harandianStyles.largeText}>
@@ -70,13 +79,7 @@ export default function HiradHarandianProject() {
                 We were tasked with designing a complete visual identity, a distinctive logo, and a modern, responsive website that reflects his consulting authority while carrying creative energy and subtle references to the gaming culture he champions.
               </p>
             </div>
-            <div className={harandianStyles.sideImage}>
-              <img 
-                src="/Harandian/Untitled-1.jpg" 
-                alt="Brand Identity Design" 
-                className={harandianStyles.contentImage}
-              />
-            </div>
+      
           </div>
         </div>
         
@@ -104,10 +107,10 @@ export default function HiradHarandianProject() {
         {/* Creative Direction */}
         <div className={harandianStyles.section}>
           <div className={harandianStyles.contentWithImage}>
-            <div className={harandianStyles.sideImage}>
+          <div className={harandianStyles.sideImage } >
               <img 
-                src="/Harandian/Consultant-Personal-Logo (1).jpg" 
-                alt="Logo design process" 
+                src="/Harandian/Untitled-144.jpg" 
+                alt="Final brand implementation" 
                 className={harandianStyles.contentImage}
               />
             </div>
@@ -150,24 +153,15 @@ export default function HiradHarandianProject() {
         
         {/* Outcome */}
         <div className={harandianStyles.section}>
-          <div className={harandianStyles.contentWithImage}>
-            <div className={harandianStyles.sideImage}>
-              <img 
-                src="/Harandian/Untitled-144.jpg" 
-                alt="Final brand implementation" 
-                className={harandianStyles.contentImage}
-              />
-            </div>
-            <div className={harandianStyles.textContent}>
-              <h2 className={harandianStyles.sectionHeading}>Outcome</h2>
-              <p className={harandianStyles.largeText}>
-                The result is a future-proof personal brand that balances technical expertise, regional pride, and creative depth. Hirad Harandian's new identity establishes him as both a strategic consultant and an industry mentor, equipped to lead conversations in gaming, startups, and interactive media for years to come.
-              </p>
-              <blockquote className={harandianStyles.testimonial}>
-                "I had the chance to work with Rasm Team for our website designs and other branding assets at different occasions. We are really satisfied with the team performance as they pay attention to details and they try to understand your needs properly before they start the work. They take an extra step to make suggestions and improvements along the way."
-                <cite>— M. Hajipour, Founder of bestyhome.ae</cite>
-              </blockquote>
-            </div>
+          <div className={harandianStyles.textContent}>
+            <h2 className={harandianStyles.sectionHeading}>Outcome</h2>
+            <p className={harandianStyles.largeText}>
+              The result is a future-proof personal brand that balances technical expertise, regional pride, and creative depth. Hirad Harandian's new identity establishes him as both a strategic consultant and an industry mentor, equipped to lead conversations in gaming, startups, and interactive media for years to come.
+            </p>
+            <blockquote className={harandianStyles.testimonial}>
+              "Working with Rasm has consistently been a pleasantly surprising experience. The team goes above and beyond the brief to ensure the success of your vision. They've always been fair in acknowledging any mistakes and have taken immediate steps to correct and resolve them. Rasm is not just an outsourcing partner—they&apos;re a true extension of your team, committed to delivering results that exceed expectations."
+              <cite>— Hirad Harandian</cite>
+            </blockquote>
           </div>
         </div>
 

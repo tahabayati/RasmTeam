@@ -63,9 +63,10 @@
 .sideImage {
   border-radius: 16px;
   overflow: hidden;
-  aspect-ratio: 4/3;
+  aspect-ratio: 1/1;
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
   border: 1px solid rgba(0, 0, 0, 0.05);
+  max-width: 800px;
 }
 
 .contentImage {
@@ -95,7 +96,7 @@
   padding: 24px;
   background: #f7f7f7;
   border-radius: 12px;
-  border-left: 4px solid #fa5c5c;
+  border-left: 4px solid #cfc7ff;
   font-style: italic;
   font-size: clamp(15px, 1.8vw, 20px);
   line-height: 1.6;
@@ -132,8 +133,8 @@
   align-items: center;
   gap: 12px;
   padding: 12px 24px;
-  background: #fa5c5c;
-  color: white;
+  background: #cfc7ff;
+  color: rgb(39, 39, 39);
   border-radius: 8px;
   text-decoration: none;
   font-weight: 600;
@@ -142,7 +143,7 @@
 }
 
 .ctaButton:hover {
-  background: #e54c4c;
+  background: #cfc7ff;
   transform: translateY(-2px);
 }
 

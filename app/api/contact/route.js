@@ -40,8 +40,23 @@ export async function POST(request) {
   }
 }
 
-export function GET() {
-  return NextResponse.json({ ok: true });
+export async function GET() {
+  try {
+    let data = [];
+    try {
+      const raw = await fs.readFile(filePath, "utf8");
+      data = JSON.parse(raw || "[]");
+      if (!Array.isArray(data)) data = [];
+    } catch (err) {
+      if (err && err.code !== "ENOENT") {
+        return NextResponse.json({ error: "Failed to read storage" }, { status: 500 });
+      }
+    }
+    
+    return NextResponse.json({ submissions: data });
+  } catch (error) {
+    return NextResponse.json({ error: "Unexpected error" }, { status: 500 });
+  }
 }
 
 

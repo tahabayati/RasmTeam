@@ -139,7 +139,7 @@ export default function Footer() {
                 {contactStatus === "loading" ? "Sending..." : "Send Message"}
                 <FiArrowUpRight className={styles.buttonIcon} />
               </button>
-              {contactStatus === "ok" && <div className={styles.successMessage}>Thanks! We'll be in touch soon.</div>}
+              {contactStatus === "ok" && <div className={styles.successMessage}>We'll be in touch soon.</div>}
               {contactStatus === "error" && <div className={styles.errorMessage}>Something went wrong. Please try again.</div>}
             </div>
           </form>
@@ -190,6 +190,7 @@ export default function Footer() {
             <p className={styles.newsletterText}>
               Get the latest updates on our projects and creative insights.
             </p>
+          
             <form onSubmit={onNewsletterSubmit} className={styles.newsletterForm}>
               <div className={styles.newsletterInputWrapper}>
                 <input
@@ -210,7 +211,7 @@ export default function Footer() {
                   <FiArrowUpRight className={styles.newsletterIcon} />
                 </button>
               </div>
-              {nlStatus === "ok" && <div className={styles.successMessage}>Welcome to our newsletter!</div>}
+              {nlStatus === "ok" && <div className={styles.successMessage}>Welcome to our newsletter</div>}
               {nlStatus === "error" && <div className={styles.errorMessage}>Please try again.</div>}
             </form>
           </div>

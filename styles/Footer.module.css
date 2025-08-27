@@ -28,7 +28,7 @@
   display: flex;
   gap: clamp(30px, 5vw, 60px);
   position: relative;
-  z-index: 1;
+  z-index: 0;
   align-items: stretch; /* Make both sections same height */
 }
 
@@ -417,7 +417,7 @@
 /* Status Messages */
 .successMessage {
   font-size: 13px;
-  color: #4ade80;
+  color: #D9D2FE;
   display: flex;
   align-items: center;
   gap: 8px;

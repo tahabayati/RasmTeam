@@ -1019,7 +1019,7 @@
     height: 100px;
     object-fit: contain;
     background: #ffffff;
-  
+    max-width: 100px;
     padding: 10px;
     box-sizing: border-box;
   }

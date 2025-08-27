@@ -79,9 +79,9 @@ export default function Footer() {
                 <FiPhone className={styles.contactIcon} />
                 <span>UAE: +971 52 155 5528</span>
               </Link>
-              <Link href="tel:+971521555528" className={styles.contactInfoItem}>
+              <Link href="tel:+61478352658" className={styles.contactInfoItem}>
                 <FiPhone className={styles.contactIcon} />
-                <span>AU: +971 52 155 5528</span>
+                <span>AU: +61 47 835 2658</span>
               </Link>
               <Link href="mailto:info@rasmteam.com" className={styles.contactInfoItem}>
                 <FiMail className={styles.contactIcon} />

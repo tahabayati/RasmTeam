@@ -263,29 +263,48 @@ export default function Home() {
 
   <section className={styles.Collaborators}>
     
+    <h2 className={styles.duoTitle}>Our Collaborators</h2>
     <div className={styles.collaboratorsGrid}>
       {/* Placeholder logos - replace with actual collaborator logos */}
       <img 
         src="/collaborators/Shabloun.png" 
-        alt="Collaborator 1" 
+        alt="Shabloun" 
         className={styles.collaboratorLogo}
         loading="lazy"
       />
       <img 
         src="/collaborators/Harandian.png" 
-        alt="Collaborator 2" 
+        alt="Harandian" 
         className={styles.collaboratorLogo}
         loading="lazy"
       />
       <img 
-        src="/collaborators/Ng.png" 
-        alt="Collaborator 3" 
+        src="/collaborators/NG.png" 
+        alt="Niroo gharb" 
         className={styles.collaboratorLogo}
         loading="lazy"
       />
       <img 
         src="/collaborators/MountWay.png" 
-        alt="Collaborator 4" 
+        alt="MountWay" 
+        className={styles.collaboratorLogo}
+        loading="lazy"
+      />
+      <img 
+        src="/collaborators/Oko.png" 
+        alt="Oko" 
+        className={styles.collaboratorLogo}
+        loading="lazy"
+      />
+      <img 
+        src="/collaborators/AHLogo.png" 
+        alt="AH Architects" 
+        className={styles.collaboratorLogo}
+        loading="lazy"
+      />
+      <img 
+        src="/collaborators/Rework.png" 
+        alt="Rework" 
         className={styles.collaboratorLogo}
         loading="lazy"
       />

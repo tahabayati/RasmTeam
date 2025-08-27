@@ -158,14 +158,20 @@ export default function VideoHero() {
             <video
               ref={vidRef}
               className={`${styles.video} ${isMobile ? styles.mobileVideo : ''}`}
-              src={isMobile ? "/Mobile-HeroVideo.webm" : "/HeroVideo.webm"}
               autoPlay
               playsInline
               muted
               loop
               preload="metadata"
               poster="/hero-poster.jpg"
-            />
+            >
+              {/* Mobile sources */}
+              <source src="/Mobile-HeroVideo.webm" type="video/webm" media="(max-width: 768px)" />
+              <source src="/Mobile-HeroVideo.mp4" type="video/mp4" media="(max-width: 768px)" />
+              {/* Desktop sources */}
+              <source src="/HeroVideo.webm" type="video/webm" media="(min-width: 769px)" />
+              <source src="/HeroVideo.mp4" type="video/mp4" media="(min-width: 769px)" />
+            </video>
           ) : (
             <div className={`${styles.wire} ${isMobile ? styles.mobileWire : ''}`} aria-hidden="true" />
           )}
